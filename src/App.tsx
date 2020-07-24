@@ -1,13 +1,17 @@
 import React from 'react'
 import { Navigation, Wrapper } from './components'
-import { AvLogo } from './assets'
+import { Svg3DAvLogo } from './assets'
+
+import './App.css'
 
 function App() {
   return (
     <>
       <Navigation
-        left={<AvLogo width="15%" viewBox="0 0 640 640" height="15%" />}
-      />
+        left={<Svg3DAvLogo width="40px" viewBox="0 0 640 640" height="40px" />}
+      >
+        ALVIS
+      </Navigation>
       <Wrapper>Hello</Wrapper>
     </>
   )

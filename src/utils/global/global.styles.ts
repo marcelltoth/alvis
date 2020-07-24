@@ -2,6 +2,17 @@ import { createGlobalStyle } from 'styled-components'
 import { ThemeType } from '../theme'
 
 export const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
+  @font-face {
+    font-family: Futura;
+    src: url(fonts/Futura.woff);
+    src: url(fonts/Futura.woff?#iefix) format('embedded-opentype'),
+      url(fonts/Futura.woff) format('woff'),
+      url(fonts/Futura.woff) format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+  }
+
   html,
   body {
     box-sizing: border-box;

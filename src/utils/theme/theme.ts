@@ -181,7 +181,7 @@ export const theme = {
     lineHeightSmall: '1.4',
 
     fontFamilyDisplay: 'Playfair Display, serif',
-    fontFamily: 'Roboto, sans-serif',
+    fontFamily: 'Futura, Roboto, sans-serif',
     fontWeight: '400',
     fontWeightBold: '600',
   },
