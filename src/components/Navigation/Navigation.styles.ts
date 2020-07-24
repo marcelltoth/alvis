@@ -5,7 +5,6 @@ export const NavigationBar = styled.div<{ offset: string }>`
   position: fixed;
   z-index: 10;
   top: ${({ offset }) => offset};
-
   width: 100%;
   min-height: ${({ theme }) => theme.spacers.size64};
   border-bottom: 1px solid ${({ theme }) => theme.colours.baseLight};

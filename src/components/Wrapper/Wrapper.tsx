@@ -29,6 +29,7 @@ const StyledDiv = styled.div`
     isFullHeight ? '100%' : 'auto'};
   max-width: ${({ width }: StyledDivType) => width};
   position: relative;
+  background: ${({ theme }) => theme.colours.background};
 `
 
 const Wrapper = ({
