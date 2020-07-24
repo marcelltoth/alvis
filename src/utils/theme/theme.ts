@@ -116,7 +116,7 @@ export type ThemeType = {
   }
 }
 
-const theme: ThemeType = {
+export const theme = {
   breakpoints: ['950px', '1024px'],
   boxShadow: '0px 4px 6px 0px rgba(0, 0, 0, 0.2)',
   clientBoxShadow: '0px 4px 10px rgba(28, 36, 82, 0.1)',

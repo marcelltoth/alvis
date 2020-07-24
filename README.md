@@ -1,3 +1,8 @@
+<!-- https://www.hackerearth.com/practice/algorithms/sorting/quick-sort/visualize/
+
+https://www.hackerearth.com/practice/data-structures/arrays/1-d/tutorial/
+-->
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
