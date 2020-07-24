@@ -3,6 +3,14 @@
 https://www.hackerearth.com/practice/data-structures/arrays/1-d/tutorial/
 -->
 
+// algorithms
+// data structures
+// system design
+// design patterns
+// quantum algorithms
+// maths
+// nature of code
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

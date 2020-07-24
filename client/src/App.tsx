@@ -5,6 +5,7 @@ import { Svg3DAvLogo, Burger } from './assets'
 import './App.css'
 import { countDown } from './utils'
 import { Flex } from '@rebass/grid'
+import { Drawer } from './components/Drawer'
 
 function App() {
   let code = ''
@@ -17,14 +18,15 @@ function App() {
     count--
   }
 
-  console.log('code', code)
-
   return (
     <>
-      <Navigation left={<Burger />}>
+      <Navigation
+        // left={<Burger stroke-width="2px" stroke-linecap="round" />}
+        left={<Drawer />}
+      >
         <Flex flexDirection="column" alignItems="center">
           <Svg3DAvLogo width="40px" viewBox="0 0 640 640" height="40px" />
-          ALVIS
+          <span>ALVIS</span>
         </Flex>
       </Navigation>
       <Wrapper>

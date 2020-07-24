@@ -22,7 +22,7 @@ type Props = {
   size?: 'small' | 'medium' | 'large' | 'extraLarge'
 }
 
-const StyledDiv = styled.div`
+const StyledDiv = styled.main`
   margin: auto;
   width: 90%;
   height: ${({ isFullHeight }: StyledDivType) =>
