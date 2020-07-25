@@ -1,3 +1,3 @@
 export * from './theme'
-export * from './global'
 export * from './algorithms'
+export * from './arrayElementSwap'

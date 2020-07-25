@@ -1,4 +1,15 @@
 import { rem } from 'polished'
+import { createMuiTheme } from '@material-ui/core/styles'
+
+export const muiTheme = createMuiTheme({
+  typography: {
+    fontFamily: `"Roboto", "Helvetica", "Arial", sans-serif`,
+    fontSize: 14,
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+  },
+})
 
 export type ThemeType = {
   breakpoints: string[]

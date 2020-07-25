@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
+
 import Drawer from '@material-ui/core/Drawer'
 import Button from '@material-ui/core/Button'
 import List from '@material-ui/core/List'
@@ -10,22 +10,20 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import AcUnitIcon from '@material-ui/icons/AcUnit'
 import MenuIcon from '@material-ui/icons/Menu'
+import SortIcon from '@material-ui/icons/Sort'
+import FindInPageIcon from '@material-ui/icons/FindInPage'
+import { useStyles } from './Drawer.styles'
+import IconButton from '@material-ui/core/IconButton'
 
 const menuItems = [
   { text: 'Recursion', icon: <AcUnitIcon />, onClick: () => {} },
-  { text: 'Sorting' },
+  { text: 'Sorting', icon: <SortIcon /> },
+  { text: 'Searching', icon: <FindInPageIcon /> },
 ]
 
-const useStyles = makeStyles({
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: 'auto',
-  },
-})
+type Props = {}
 
-export default function () {
+export default function ({}: Props) {
   const classes = useStyles()
   const [state, setState] = React.useState<{ [key in string]: boolean }>({
     top: false,
@@ -56,15 +54,6 @@ export default function () {
     >
       <List>
         {menuItems.map(({ text, icon, onClick }) => (
-          <ListItem key={text}>
-            {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
-            {text ? <ListItemText primary={text} /> : null}
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {menuItems.map(({ text, icon, onClick }) => (
           <ListItem button key={text} onClick={onClick}>
             {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
             {text ? <ListItemText primary={text} /> : null}
@@ -77,9 +66,15 @@ export default function () {
   const anchor: string = 'left'
   return (
     <React.Fragment key={anchor}>
-      <Button onClick={toggleDrawer(anchor, true)}>
-        <MenuIcon />
-      </Button>
+      <IconButton
+        edge="start"
+        className={classes.menuButton}
+        color="inherit"
+        aria-label="open drawer"
+        onClick={toggleDrawer(anchor, true)}
+      >
+        <MenuIcon className={classes.muiSvgIcon} />
+      </IconButton>
       <Drawer
         anchor={anchor as 'left' | 'right' | 'top' | 'bottom'}
         open={state[anchor]}

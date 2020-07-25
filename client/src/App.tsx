@@ -6,6 +6,7 @@ import './App.css'
 import { countDown } from './utils'
 import { Flex } from '@rebass/grid'
 import { Drawer } from './components/Drawer'
+import { Container } from '@material-ui/core'
 
 function App() {
   let code = ''
@@ -20,13 +21,8 @@ function App() {
 
   return (
     <>
-      <Navigation left={<Drawer />}>
-        <Flex flexDirection="column" alignItems="center">
-          <Svg3DAvLogo width="40px" viewBox="0 0 640 640" height="40px" />
-          <span>zero knowledge expert</span>
-        </Flex>
-      </Navigation>
-      <Wrapper>
+      <Navigation />
+      <Container maxWidth="xl">
         <div style={{ width: '50%', margin: 'auto' }}>
           <CodeHighlighter
             code={`function countDown(fromNumber) {
@@ -40,7 +36,16 @@ function App() {
         <div style={{ width: '50%', margin: 'auto' }}>
           <CodeHighlighter code={code} />
         </div>
-      </Wrapper>
+        <div style={{ width: '50%', margin: 'auto' }}>
+          <CodeHighlighter code={code} />
+        </div>
+        <div style={{ width: '50%', margin: 'auto' }}>
+          <CodeHighlighter code={code} />
+        </div>
+        <div style={{ width: '50%', margin: 'auto' }}>
+          <CodeHighlighter code={code} />
+        </div>
+      </Container>
     </>
   )
 }
