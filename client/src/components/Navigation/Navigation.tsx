@@ -21,8 +21,10 @@ export default function SearchAppBar() {
           <Drawer />
 
           <Typography color="inherit" variant="h6" className={classes.title}>
-            <Svg3DAvLogo width="40px" viewBox="0 0 640 640" height="40px" />
             Alvis
+          </Typography>
+          <Typography color="inherit" variant="h6" className={classes.title}>
+            <Svg3DAvLogo width="40px" viewBox="0 0 640 640" height="40px" />
           </Typography>
 
           <div className={classes.search}>

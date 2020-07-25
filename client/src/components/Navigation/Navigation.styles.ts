@@ -14,11 +14,12 @@ export const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     display: 'none',
-    color: fade(theme.palette.common.black, 0.3),
+    color: theme.palette.common.black,
     [theme.breakpoints.up('sm')]: {
       display: 'flex',
       alignItems: 'center',
     },
+    fontWeight: 700,
   },
 
   search: {
@@ -48,6 +49,7 @@ export const useStyles = makeStyles((theme) => ({
   inputRoot: {
     color: 'inherit',
     backgroundColor: fade(theme.palette.common.white, 0.3),
+    width: '100%',
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
