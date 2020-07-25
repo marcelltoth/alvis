@@ -1,4 +1,6 @@
-export function* countDown(fromNumber: number): any {
+export function* countDown(
+  fromNumber: number
+): Generator<number, number | number | undefined> {
   if (fromNumber <= 0) {
     return fromNumber
   }
@@ -6,10 +8,10 @@ export function* countDown(fromNumber: number): any {
   yield* countDown(fromNumber - 1)
 }
 
-// function* take(num: number, iter: { next: () => any }) {
-//   let item = iter.next()
-//   for (let index = 0; index < num && !item.done; index++) {
-//     yield item.value
-//     item = iter.next()
-//   }
-// }
+function* take(num: number, iter: { next: () => any }) {
+  let item = iter.next()
+  for (let index = 0; index < num && !item.done; index++) {
+    yield item.value
+    item = iter.next()
+  }
+}

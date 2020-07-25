@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigation, Wrapper, CodeHighlighter } from './components'
-import { Svg3DAvLogo, Burger } from './assets'
+import { Svg3DAvLogo } from './assets'
 
 import './App.css'
 import { countDown } from './utils'
@@ -20,13 +20,10 @@ function App() {
 
   return (
     <>
-      <Navigation
-        // left={<Burger stroke-width="2px" stroke-linecap="round" />}
-        left={<Drawer />}
-      >
+      <Navigation left={<Drawer />}>
         <Flex flexDirection="column" alignItems="center">
           <Svg3DAvLogo width="40px" viewBox="0 0 640 640" height="40px" />
-          <span>ALVIS</span>
+          <span>zero knowledge expert</span>
         </Flex>
       </Navigation>
       <Wrapper>

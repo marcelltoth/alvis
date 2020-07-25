@@ -8,10 +8,13 @@ import Divider from '@material-ui/core/Divider'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
-import MailIcon from '@material-ui/icons/Mail'
 import AcUnitIcon from '@material-ui/icons/AcUnit'
-import { Burger } from '../../assets/components'
+import MenuIcon from '@material-ui/icons/Menu'
+
+const menuItems = [
+  { text: 'Recursion', icon: <AcUnitIcon />, onClick: () => {} },
+  { text: 'Sorting' },
+]
 
 const useStyles = makeStyles({
   list: {
@@ -51,46 +54,39 @@ export default function () {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      {/* <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
+      <List>
+        {menuItems.map(({ text, icon, onClick }) => (
+          <ListItem key={text}>
+            {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
+            {text ? <ListItemText primary={text} /> : null}
           </ListItem>
         ))}
       </List>
-       */}
       <Divider />
       <List>
-        {[{ text: 'Recursion', icon: <AcUnitIcon />, onClick: () => {} }].map(
-          ({ text, icon }) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{icon}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          )
-        )}
+        {menuItems.map(({ text, icon, onClick }) => (
+          <ListItem button key={text} onClick={onClick}>
+            {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
+            {text ? <ListItemText primary={text} /> : null}
+          </ListItem>
+        ))}
       </List>
     </div>
   )
 
   const anchor: string = 'left'
   return (
-    <div>
-      <React.Fragment key={anchor}>
-        <Button onClick={toggleDrawer(anchor, true)}>
-          <Burger stroke-width="2px" stroke-linecap="round" />
-        </Button>
-        <Drawer
-          anchor={anchor as 'left' | 'right' | 'top' | 'bottom'}
-          open={state[anchor]}
-          onClose={toggleDrawer(anchor, false)}
-        >
-          {list(anchor)}
-        </Drawer>
-      </React.Fragment>
-    </div>
+    <React.Fragment key={anchor}>
+      <Button onClick={toggleDrawer(anchor, true)}>
+        <MenuIcon />
+      </Button>
+      <Drawer
+        anchor={anchor as 'left' | 'right' | 'top' | 'bottom'}
+        open={state[anchor]}
+        onClose={toggleDrawer(anchor, false)}
+      >
+        {list(anchor)}
+      </Drawer>
+    </React.Fragment>
   )
 }

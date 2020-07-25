@@ -1,7 +1,11 @@
-export function* fib(n: number, current: number = 0, next: number = 1): any {
+export function* fibonacci(
+  n: number,
+  current: number = 0,
+  next: number = 1
+): Generator<number, number | undefined, number | undefined> {
   if (n === 0) {
     return 0
   }
   yield current
-  yield* fib(n - 1, next, current + next)
+  yield* fibonacci(n - 1, next, current + next)
 }
