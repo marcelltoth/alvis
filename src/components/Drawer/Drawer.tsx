@@ -18,6 +18,7 @@ import WidgetsIcon from '@material-ui/icons/Widgets'
 import { Typography } from '@material-ui/core'
 import { SolidAvLogo } from '../../assets'
 import { ControlledAccordions } from '../ControlledAccordions'
+import SettingsApplicationsTwoToneIcon from '@material-ui/icons/SettingsApplicationsTwoTone'
 
 const menuItems = [
   {
@@ -31,6 +32,7 @@ const menuItems = [
   },
   { text: 'Quantum', icon: <WavesIcon /> },
   { text: 'Machine learning', icon: <ShowChartIcon /> },
+  { text: 'System design', icon: <SettingsApplicationsTwoToneIcon /> },
 ]
 
 type Props = {}

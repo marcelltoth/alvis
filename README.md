@@ -3,6 +3,10 @@
 https://www.hackerearth.com/practice/data-structures/arrays/1-d/tutorial/
 
 https://codesandbox.io/s/draggable-list-prevent-scroll-ed7c6?file=/src/index.js
+
+https://www.youtube.com/c/BrianFaure1/videos
+http://sorting.at/
+https://www.makinguse.com/
 -->
 
 // visualise complexity
@@ -26,7 +30,15 @@ https://jlongster.com/Implementing-Stepping-Debugger-JavaScript
 http://worrydream.com/LearnableProgramming/
 https://github.com/amasad/learnable-programming-demo/blob/gh-pages/lib/boot/index.js
 
+debugger with code examples and exercises
+real-time time and space complexity analysis
+interactive examples, manual implementation and automatic resolution
+explanations
+
 wallet creator
+
+firebase/relational database
+authorisation and authentication
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

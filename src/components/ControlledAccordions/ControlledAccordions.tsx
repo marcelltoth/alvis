@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: theme.typography.pxToRem(15),
       flexBasis: '33.33%',
       flexShrink: 0,
+      whiteSpace: 'nowrap',
     },
     secondaryHeading: {
       fontSize: theme.typography.pxToRem(15),
