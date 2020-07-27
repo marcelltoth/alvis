@@ -5,15 +5,22 @@ import { TransitionList } from '../../components'
 
 const SortingRoutes = () => {
   return (
-    <Route
-      path={['/sorting/bubble-sort']}
-      render={() => (
-        <Container maxWidth="xl">
-          {/* <DraggableList items={count} /> */}
-          <TransitionList />
-        </Container>
-      )}
-    />
+    <>
+      <Route
+        exact
+        path={['/sorting']}
+        render={() => <Container maxWidth="xl">sorting</Container>}
+      />
+      <Route
+        path={['/sorting/bubble-sort']}
+        render={() => (
+          <Container maxWidth="xl">
+            {/* <DraggableList items={count} /> */}
+            <TransitionList />
+          </Container>
+        )}
+      />
+    </>
   )
 }
 

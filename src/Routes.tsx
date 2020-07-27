@@ -11,7 +11,7 @@ const Routing = () => {
       <Navigation />
       <Switch>
         <Route exact path={['/']} render={() => <>Hello</>} />
-        <Route path={['/sorting/:id']} render={SortingRoutes} />
+        <Route path={['/sorting', '/sorting/:id']} render={SortingRoutes} />
         <Route render={() => <>Not Found</>} />
       </Switch>
     </Router>

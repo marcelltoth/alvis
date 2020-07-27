@@ -29,8 +29,8 @@ const menuItems = [
       { text: 'Searching', icon: <FindInPageIcon /> },
     ],
   },
-  // { text: 'Quantum', icon: <WavesIcon /> },
-  // { text: 'Machine learning', icon: <ShowChartIcon /> },
+  { text: 'Quantum', icon: <WavesIcon /> },
+  { text: 'Machine learning', icon: <ShowChartIcon /> },
 ]
 
 type Props = {}
@@ -84,16 +84,18 @@ export default function ({}: Props) {
             }
             id={text}
           >
-            <>
-              {children?.map(({ text, icon }) => {
-                return (
-                  <ListItem button key={`${text}${index}`}>
-                    {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
-                    {text ? <ListItemText primary={text} /> : null}
-                  </ListItem>
-                )
-              })}
-            </>
+            {children?.map(({ text, icon }) => {
+              return (
+                <ListItem
+                  button
+                  key={`${text}${index}`}
+                  onClick={toggleDrawer(anchor, false)}
+                >
+                  {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
+                  {text ? <ListItemText primary={text} /> : null}
+                </ListItem>
+              )
+            })}
           </ControlledAccordions>
         ))}
       </List>

@@ -5,6 +5,7 @@ import AccordionDetails from '@material-ui/core/AccordionDetails'
 import AccordionSummary from '@material-ui/core/AccordionSummary'
 import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import { rgba } from 'polished'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,6 +24,9 @@ const useStyles = makeStyles((theme: Theme) =>
     accordion: {
       boxShadow: 'none',
       margin: 0,
+      '&.Mui-expanded': {
+        backgroundColor: rgba(0, 0, 0, 0.1),
+      },
     },
   })
 )
@@ -58,7 +62,7 @@ function ControlledAccordions({ children, title, id }: Props) {
         >
           {title ? <div className={classes.heading}>{title}</div> : null}
         </AccordionSummary>
-        {children}
+        <>{children}</>
       </Accordion>
     </div>
   )

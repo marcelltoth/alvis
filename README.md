@@ -5,6 +5,7 @@ https://www.hackerearth.com/practice/data-structures/arrays/1-d/tutorial/
 https://codesandbox.io/s/draggable-list-prevent-scroll-ed7c6?file=/src/index.js
 -->
 
+// visualise complexity
 // debugger
 // algorithms
 // data structures
@@ -20,6 +21,10 @@ https://codesandbox.io/s/draggable-list-prevent-scroll-ed7c6?file=/src/index.js
 // implement solutions to several problems in the online editor and debugger
 https://amasad.me/js-vms
 https://amasad.me/js-debugger
+https://github.com/amasad/debugjs
+https://jlongster.com/Implementing-Stepping-Debugger-JavaScript
+http://worrydream.com/LearnableProgramming/
+https://github.com/amasad/learnable-programming-demo/blob/gh-pages/lib/boot/index.js
 
 wallet creator
 
