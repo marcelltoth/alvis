@@ -6,6 +6,8 @@ import data, { sortedData } from './data'
 import './styles.css'
 import { bubbleSort } from '../../utils'
 
+let sd = sortedData
+
 export default function App() {
   const [rows, set] = useState(data)
   useEffect(
@@ -14,11 +16,18 @@ export default function App() {
         () =>
           set((v) => {
             let x = v.slice()
-            const shouldShuffle = sortedData.every(
-              (el, i) => el.value === x[i].value
-            )
+            const shouldShuffle = sd.every((el, i) => el.value === x[i].value)
             if (shouldShuffle) {
-              x = shuffle(x)
+              x = shuffle(
+                x.map((n) => {
+                  n.value = Math.floor(Math.random() * 20)
+                  return n
+                })
+              )
+              sd = x.sort((a, b) => {
+                return a.value - b.value
+              })
+              console.log('sd', sd)
             } else {
               x = bubbleSort({ data: x }).next().value
             }
