@@ -7,6 +7,12 @@ export const useStyles = makeStyles((theme) => ({
   fullList: {
     width: 'auto',
   },
+  title: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '10px',
+  },
   muiSvgIcon: {
     fill: fade(theme.palette.common.black, 0.25),
   },

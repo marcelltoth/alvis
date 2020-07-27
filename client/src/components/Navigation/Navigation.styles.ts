@@ -1,4 +1,5 @@
-import { fade, makeStyles } from '@material-ui/core/styles'
+import { fade, makeStyles, withTheme } from '@material-ui/core/styles'
+import { transparentize } from 'polished'
 
 export const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,6 +19,9 @@ export const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'flex',
       alignItems: 'center',
+      justifyContent: 'center',
+      width: '100%',
+      marginLeft: '12px',
     },
     fontWeight: 700,
   },
@@ -59,9 +63,15 @@ export const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      width: '12ch',
+      width: '0',
+      color: 'transparent',
+      '&:hover': {
+        cursor: 'pointer',
+      },
       '&:focus': {
         width: '20ch',
+        color: 'white',
+        cursor: 'text',
       },
     },
   },

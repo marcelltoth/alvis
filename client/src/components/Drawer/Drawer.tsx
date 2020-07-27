@@ -12,11 +12,19 @@ import SortIcon from '@material-ui/icons/Sort'
 import FindInPageIcon from '@material-ui/icons/FindInPage'
 import { useStyles } from './Drawer.styles'
 import IconButton from '@material-ui/core/IconButton'
+import WavesIcon from '@material-ui/icons/Waves'
+import ShowChartIcon from '@material-ui/icons/ShowChart'
+import WidgetsIcon from '@material-ui/icons/Widgets'
+import { Typography } from '@material-ui/core'
+import { SolidAvLogo } from '../../assets'
 
 const menuItems = [
+  { text: 'Algorithms', icon: <WidgetsIcon /> },
   { text: 'Recursion', icon: <AcUnitIcon />, onClick: () => {} },
   { text: 'Sorting', icon: <SortIcon /> },
   { text: 'Searching', icon: <FindInPageIcon /> },
+  // { text: 'Quantum', icon: <WavesIcon /> },
+  // { text: 'Machine learning', icon: <ShowChartIcon /> },
 ]
 
 type Props = {}
@@ -50,6 +58,9 @@ export default function ({}: Props) {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
+      <Typography color="inherit" variant="h6" className={classes.title}>
+        <SolidAvLogo width="40px" viewBox="0 0 640 640" height="40px" />
+      </Typography>
       <List>
         {menuItems.map(({ text, icon, onClick }) => (
           <ListItem button key={text} onClick={onClick}>

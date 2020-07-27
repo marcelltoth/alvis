@@ -1,8 +1,11 @@
 <!-- https://www.hackerearth.com/practice/algorithms/sorting/quick-sort/visualize/
 
 https://www.hackerearth.com/practice/data-structures/arrays/1-d/tutorial/
+
+https://codesandbox.io/s/draggable-list-prevent-scroll-ed7c6?file=/src/index.js
 -->
 
+// debugger
 // algorithms
 // data structures
 // system design
@@ -10,6 +13,15 @@ https://www.hackerearth.com/practice/data-structures/arrays/1-d/tutorial/
 // quantum algorithms
 // maths
 // nature of code
+
+// which type of sort is this? Why?
+// manually execute the sort yourself
+// execute the code, step through it
+// implement solutions to several problems in the online editor and debugger
+https://amasad.me/js-vms
+https://amasad.me/js-debugger
+
+wallet creator
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

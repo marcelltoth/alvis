@@ -8,7 +8,7 @@ import SearchIcon from '@material-ui/icons/Search'
 import { useStyles } from './Navigation.styles'
 import { Drawer } from '../Drawer'
 import { Flex } from '@rebass/grid'
-import { Svg3DAvLogo } from '../../assets'
+import { SolidAvLogo } from '../../assets'
 import { Box } from '@material-ui/core'
 
 export default function SearchAppBar() {
@@ -19,12 +19,8 @@ export default function SearchAppBar() {
       <AppBar className={classes.muiAppBar} position="static">
         <Toolbar>
           <Drawer />
-
           <Typography color="inherit" variant="h6" className={classes.title}>
-            Alvis
-          </Typography>
-          <Typography color="inherit" variant="h6" className={classes.title}>
-            <Svg3DAvLogo width="40px" viewBox="0 0 640 640" height="40px" />
+            <SolidAvLogo width="40px" viewBox="0 0 640 640" height="40px" />
           </Typography>
 
           <div className={classes.search}>

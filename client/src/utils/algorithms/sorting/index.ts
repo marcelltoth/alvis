@@ -1,1 +1,1 @@
-export * from './bubble'
+export * from './bubbleSort'

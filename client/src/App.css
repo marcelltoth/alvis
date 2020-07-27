@@ -1,3 +1,9 @@
+*::selection {
+  background-color: transparent;
+  color: #00fbe4;
+  text-shadow: 1px 1px #ff0986;
+}
+
 .App {
   text-align: center;
 }

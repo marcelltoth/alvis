@@ -1,1 +1,1 @@
-> > fresh main.go
+> fresh main.go
