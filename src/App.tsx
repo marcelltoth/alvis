@@ -11,6 +11,7 @@ import { countDown, bubbleSort, iterateGenerator } from './utils'
 import { Flex } from '@rebass/grid'
 import { DraggableList } from './components'
 import { Container } from '@material-ui/core'
+import Routes from './Routes'
 
 function App() {
   const [state, setState] = useState([2, 6, 3, 9, 1])
@@ -25,35 +26,7 @@ function App() {
   //   count--
   // }
 
-  // var iter = bubbleSort({ data: [2, 6, 3, 9, 1] })
-  // iterateGenerator({
-  //   iter,
-  //   process: (value) => {
-  //     console.log(value)
-  //   },
-  // })
-  const [count, setCount] = React.useState([2, 6, 3, 9, 1])
-  // React.useEffect(() => {
-  //   const i_id = setInterval(() => {
-  //     setCount((currCount) => bubbleSort({ data: currCount }).next().value)
-  //     // console.log('count', count)
-  //   }, 100)
-  //   return () => {
-  //     clearInterval(i_id)
-  //   }
-  // }, [])
-
-  // console.log('order', count)
-
-  return (
-    <>
-      <Navigation />
-      <Container maxWidth="xl">
-        {/* <DraggableList items={count} /> */}
-        <TransitionList />
-      </Container>
-    </>
-  )
+  return <Routes />
 }
 
 export default App

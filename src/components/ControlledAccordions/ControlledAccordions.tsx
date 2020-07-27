@@ -20,6 +20,10 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: theme.typography.pxToRem(15),
       color: theme.palette.text.secondary,
     },
+    accordion: {
+      boxShadow: 'none',
+      margin: 0,
+    },
   })
 )
 
@@ -29,7 +33,7 @@ type Props = {
   title: ReactNode
 }
 
-export default function ControlledAccordions({ children, title, id }: Props) {
+function ControlledAccordions({ children, title, id }: Props) {
   const classes = useStyles()
   const [expanded, setExpanded] = React.useState<string | false>(false)
 
@@ -42,18 +46,22 @@ export default function ControlledAccordions({ children, title, id }: Props) {
 
   return (
     <div className={classes.root}>
-      <Accordion expanded={expanded === id} onChange={handleChange(id)}>
+      <Accordion
+        className={classes.accordion}
+        expanded={expanded === id}
+        onChange={handleChange(id)}
+      >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          {title ? (
-            <Typography className={classes.heading}>{title}</Typography>
-          ) : null}
+          {title ? <div className={classes.heading}>{title}</div> : null}
         </AccordionSummary>
-        {children ? <AccordionDetails>{children}</AccordionDetails> : null}
+        {children}
       </Accordion>
     </div>
   )
 }
+
+export default React.memo(ControlledAccordions)

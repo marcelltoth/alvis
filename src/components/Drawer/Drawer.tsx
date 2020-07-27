@@ -17,12 +17,18 @@ import ShowChartIcon from '@material-ui/icons/ShowChart'
 import WidgetsIcon from '@material-ui/icons/Widgets'
 import { Typography } from '@material-ui/core'
 import { SolidAvLogo } from '../../assets'
+import { ControlledAccordions } from '../ControlledAccordions'
 
 const menuItems = [
-  { text: 'Algorithms', icon: <WidgetsIcon /> },
-  { text: 'Recursion', icon: <AcUnitIcon />, onClick: () => {} },
-  { text: 'Sorting', icon: <SortIcon /> },
-  { text: 'Searching', icon: <FindInPageIcon /> },
+  {
+    text: 'Algorithms',
+    icon: <WidgetsIcon />,
+    children: [
+      { text: 'Recursion', icon: <AcUnitIcon />, onClick: () => {} },
+      { text: 'Sorting', icon: <SortIcon /> },
+      { text: 'Searching', icon: <FindInPageIcon /> },
+    ],
+  },
   // { text: 'Quantum', icon: <WavesIcon /> },
   // { text: 'Machine learning', icon: <ShowChartIcon /> },
 ]
@@ -55,18 +61,40 @@ export default function ({}: Props) {
         [classes.fullList]: anchor === 'top' || anchor === 'bottom',
       })}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
+      // onClick={toggleDrawer(anchor, false)}
+      // onKeyDown={toggleDrawer(anchor, false)}
     >
       <Typography color="inherit" variant="h6" className={classes.title}>
         <SolidAvLogo width="40px" viewBox="0 0 640 640" height="40px" />
       </Typography>
       <List>
-        {menuItems.map(({ text, icon, onClick }) => (
-          <ListItem button key={text} onClick={onClick}>
-            {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
-            {text ? <ListItemText primary={text} /> : null}
-          </ListItem>
+        {menuItems.map(({ text, icon, children }, index) => (
+          <ControlledAccordions
+            key={text}
+            title={
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
+                {text ? <ListItemText primary={text} /> : null}
+              </div>
+            }
+            id={text}
+          >
+            <>
+              {children?.map(({ text, icon }) => {
+                return (
+                  <ListItem button key={`${text}${index}`}>
+                    {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
+                    {text ? <ListItemText primary={text} /> : null}
+                  </ListItem>
+                )
+              })}
+            </>
+          </ControlledAccordions>
         ))}
       </List>
     </div>
