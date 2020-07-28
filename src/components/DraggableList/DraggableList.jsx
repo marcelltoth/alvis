@@ -2,9 +2,8 @@ import React, { useRef } from 'react'
 import { clamp } from 'lodash'
 import swap from 'lodash-move'
 import { useDrag } from 'react-use-gesture'
-import { useSprings, animated } from 'react-spring'
+import { useSprings, animated, interpolate } from 'react-spring'
 import './styles.css'
-
 // Returns fitting styles for dragged/idle items
 const fn = (order, down, originalIndex, curIndex, y) => (index) =>
   down && index === originalIndex
@@ -46,8 +45,12 @@ export default function DraggableList({ items }) {
           key={i}
           style={{
             zIndex,
-            boxShadow: shadow.to(
+            boxShadow: shadow.interpolate(
               (s) => `rgba(0, 0, 0, 0.15) 0px ${s}px ${2 * s}px 0px`
+            ),
+            transform: interpolate(
+              [y, scale],
+              (y, s) => `translate3d(0,${y}px,0) scale(${s})`
             ),
             y,
             scale,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import { Container } from '@material-ui/core'
-import { TransitionList } from '../../components'
+import { DraggableList, TransitionList } from '../../components'
 
 const SortingRoutes = () => {
   return (
@@ -15,7 +15,7 @@ const SortingRoutes = () => {
         path={['/sorting/bubble-sort']}
         render={() => (
           <Container maxWidth="xl">
-            {/* <DraggableList items={count} /> */}
+            <DraggableList items={[1, 3, 2, 4]} />
             <TransitionList />
           </Container>
         )}
