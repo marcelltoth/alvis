@@ -12,6 +12,10 @@ const Routing = () => {
       <Switch>
         <Route exact path={['/']} render={() => <>Hello</>} />
         <Route path={['/sorting', '/sorting/:id']} render={SortingRoutes} />
+        <Route
+          path={['/data-structures', '/data-structures/:id']}
+          render={SortingRoutes}
+        />
         <Route render={() => <>Not Found</>} />
       </Switch>
     </Router>

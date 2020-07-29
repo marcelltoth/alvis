@@ -1,10 +1,10 @@
 import React, { useState, useRef } from 'react'
-import { render } from 'react-dom'
 import { useTransition, useSpring, useChain, config } from 'react-spring'
-import { Global, Container, Item } from './styles'
+import { Container } from '@material-ui/core'
+import { InnerContainer, Item } from './Sorting.styles'
 import data from './data'
 
-export default function App() {
+const Sorting = () => {
   const [open, set] = useState(false)
 
   const springRef = useRef()
@@ -32,18 +32,17 @@ export default function App() {
   ])
 
   return (
-    <>
-      <Global />
-      <Container
+    <Container maxWidth="xl">
+      <InnerContainer
         style={{ ...rest, width: size, height: size }}
         onClick={() => set((open) => !open)}
       >
         {transitions.map(({ item, key, props }) => (
           <Item key={key} style={{ ...props, background: item.css }} />
         ))}
-      </Container>
-    </>
+      </InnerContainer>
+    </Container>
   )
 }
 
-render(<App />, document.getElementById('root'))
+export default Sorting

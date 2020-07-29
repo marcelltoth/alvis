@@ -31,6 +31,10 @@ https://jlongster.com/Implementing-Stepping-Debugger-JavaScript
 http://worrydream.com/LearnableProgramming/
 https://github.com/amasad/learnable-programming-demo/blob/gh-pages/lib/boot/index.js
 // web workers
+// write code to get the same effect of the animations on the draggable items
+// progressive web app
+// web workers
+// use lighthouse
 
 debugger with code examples and exercises
 real-time time and space complexity analysis
