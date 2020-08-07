@@ -35,6 +35,7 @@ https://github.com/amasad/learnable-programming-demo/blob/gh-pages/lib/boot/inde
 // progressive web app
 // web workers
 // use lighthouse
+// use machine learning, semantic ML to teach
 
 debugger with code examples and exercises
 real-time time and space complexity analysis
