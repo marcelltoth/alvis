@@ -10,7 +10,7 @@ const Routing = () => {
     <Router>
       <Navigation />
       <Switch>
-        <Route exact path={['/']} render={() => <>Hello</>} />
+        <Route exact path={['/']} render={() => <>Hello TEST</>} />
         <Route path={['/sorting', '/sorting/:id']} render={SortingRoutes} />
         <Route
           path={['/data-structures', '/data-structures/:id']}
