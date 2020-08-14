@@ -43,7 +43,6 @@ export default App
           />
         </div> */
 }
-
 {
   /* <div style={{ width: '50%', margin: 'auto' }}>
 <CodeHighlighter code={code} />

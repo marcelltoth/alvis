@@ -37,18 +37,18 @@
     "lodash-move": "^1.1.1",
     "polished": "^3.6.5",
     "prettier": "^2.0.5",
+    "react": "16.8.1",
+    "react-dom": "16.8.1",
     "react-hot-loader": "^4.12.21",
+    "react-measure": "2.1.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-spring": "8.0.5",
     "react-syntax-highlighter": "^13.0.0",
     "react-use-gesture": "^7.0.15",
     "styled-components": "^5.1.1",
     "ts-loader": "^7.0.2",
-    "typescript": "^3.9.5",
-    "react": "16.8.1",
-    "react-dom": "16.8.1",
-    "react-measure": "2.1.2",
-    "react-spring": "8.0.5"
+    "typescript": "^3.9.5"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.5",

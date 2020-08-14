@@ -1,10 +1,7 @@
 import { swap } from '../../arrayElementSwap'
+import { SortingArguments } from './sorting.types'
 
-type SelectionSort = {
-  data: ({ value: number } & { [key in string]: any })[]
-}
-
-export function* selectionSort({ data }: SelectionSort) {
+export function* selectionSort({ data }: SortingArguments) {
   let min,
     arr = data
   for (let outer = 0; outer < arr.length - 1; outer++) {
