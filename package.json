@@ -5,9 +5,9 @@
   "repository": "git@github.com:596050/alvis.git",
   "license": "MIT",
   "scripts": {
-    "dev": "concurrently \"cd server && cd code-execution && yarn run start:dev\" \"cd client && yarn run start\"",
+    "start": "concurrently \"cd server && cd code-execution && yarn run start:dev\" \"cd client && yarn run start\"",
     "clean:modules": "cd client && rm -rf node_modules && cd server && cd code-execution && rm -rf node_modules",
-    "install:all": "cd server && cd code-execution && cd client &&& yarn",
+    "install:all": "cd server/code-execution && yarn && cd ../../ && cd client && yarn",
     "reset": "yarn clean:modules && yarn && yarn start"
   },
   "dependencies": {
