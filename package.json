@@ -4,13 +4,20 @@
   "main": "index.js",
   "repository": "git@github.com:596050/alvis.git",
   "license": "MIT",
-  "scripts": {
-    "start": "concurrently \"cd server && cd code-execution && yarn run start:dev\" \"cd client && yarn run start\"",
-    "clean:modules": "cd client && rm -rf node_modules && cd server && cd code-execution && rm -rf node_modules",
-    "install:all": "cd server/code-execution && yarn && cd ../../ && cd client && yarn",
-    "reset": "yarn clean:modules && yarn && yarn start"
+  "engines": {
+    "node": "12.x"
   },
+  "scripts": {
+    "dev": "concurrently \"cd server && cd code-execution && yarn run start:dev\" \"cd client && yarn run start\"",
+    "clean:modules": "rm -rf ./client/node_modules/ && rm -rf ./server/code-execution/node_modules/ && rm -rf ./node_modules/",
+    "install:all": "cd ./server/code-execution && yarn && cd ../../client && yarn",
+    "reset": "yarn clean:modules && cd ./client rm -rf build",
+    "build": "cd client && yarn && yarn run build",
+    "start": "node ./static-server"
+  },
+  "cacheDirectories": [],
   "dependencies": {
-    "concurrently": "^5.3.0"
+    "concurrently": "^5.3.0",
+    "express": "^4.16.4"
   }
 }

@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "clean:modules": "rm -rf node_modules",
-    "reset": "yarn clean:modules && yarn && yarn start",
+    "clean:modules": "rm -rf node_modules/",
+    "reset": "yarn clean:modules && rm -rf build/ && yarn && yarn start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
