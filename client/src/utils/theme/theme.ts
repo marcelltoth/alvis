@@ -144,6 +144,7 @@ export const theme = {
     success: '#007B46',
     warning: '#FF8500',
     highlight: '#CC0700',
+    dark: '#021727',
 
     background: '#F9F9FA',
     foreground: '#FFFFFF',
