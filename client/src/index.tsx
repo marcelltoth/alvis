@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom'
 import { hot } from 'react-hot-loader/root'
 import { ThemeProvider } from 'styled-components'
 import { MuiThemeProvider } from '@material-ui/core/styles'
-import 'react-grid-layout/css/styles.css'
-import 'react-resizable/css/styles.css'
 
 import * as serviceWorker from './serviceWorker'
 import './index.css'

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { Fragment, Component } from 'react'
 
 import Editor from 'react-simple-code-editor'
-import Highlight, { defaultProps, RenderProps } from 'prism-react-renderer'
+import Highlight, { defaultProps } from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/nightOwl'
 
 const exampleCode = `
@@ -21,28 +21,22 @@ const styles = {
   },
 }
 
-const CodeExecutionEditorPanel = () => {
-  const [state, setState] = useState({ code: exampleCode })
+class CodeExecutionEditorPanel extends Component {
+  state = { code: exampleCode }
 
-  const onValueChange = (code: string) => {
-    setState({ code })
+  onValueChange = (code: string) => {
+    this.setState({ code })
   }
 
-  const highlight = (code: string) => (
+  highlight = (code: string) => (
     <Highlight
       {...defaultProps}
       theme={theme}
       code={code}
       language="javascript"
     >
-      {({
-        className,
-        style,
-        tokens,
-        getLineProps,
-        getTokenProps,
-      }: RenderProps) => (
-        <>
+      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        <Fragment>
           {tokens.map((line, i) => (
             <div {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (
@@ -50,19 +44,21 @@ const CodeExecutionEditorPanel = () => {
               ))}
             </div>
           ))}
-        </>
+        </Fragment>
       )}
     </Highlight>
   )
 
-  return (
-    <Editor
-      value={state.code}
-      onValueChange={onValueChange}
-      highlight={highlight}
-      padding={10}
-      style={styles.root}
-    />
-  )
+  render() {
+    return (
+      <Editor
+        value={this.state.code}
+        onValueChange={this.onValueChange}
+        highlight={this.highlight}
+        padding={10}
+        style={styles.root as React.CSSProperties}
+      />
+    )
+  }
 }
 export default CodeExecutionEditorPanel
