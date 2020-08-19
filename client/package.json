@@ -44,6 +44,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-spring": "8.0.5",
+    "react-swipeable-views": "^0.13.9",
     "react-syntax-highlighter": "^13.5.0",
     "react-use-gesture": "^7.0.15",
     "styled-components": "^5.1.1",
@@ -51,6 +52,7 @@
     "typescript": "^3.9.5"
   },
   "devDependencies": {
+    "@types/react-swipeable-views": "^0.13.0",
     "@types/enzyme": "^3.10.5",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^26.0.7",
