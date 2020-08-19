@@ -1,1 +1,1 @@
-export * from './SortingRoutes'
+export { default as SortingRoutes } from './SortingRoutes'

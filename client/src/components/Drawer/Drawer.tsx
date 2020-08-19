@@ -33,6 +33,15 @@ const menuItems = [
   { text: 'Quantum', icon: <WavesIcon /> },
   { text: 'Machine learning', icon: <ShowChartIcon /> },
   { text: 'System design', icon: <SettingsApplicationsTwoToneIcon /> },
+  {
+    text: 'Web development',
+    icon: <SettingsApplicationsTwoToneIcon />,
+    children: [
+      { text: 'HTTPS', icon: <AcUnitIcon />, onClick: () => {} },
+      { text: 'Authentication', icon: <SortIcon /> },
+    ],
+  },
+  { text: 'GMAT', icon: <SettingsApplicationsTwoToneIcon /> },
 ]
 
 type Props = {}

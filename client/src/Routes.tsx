@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Navigation, TransitionList } from './components'
 import { Container } from '@material-ui/core'
-import SortingRoutes from './pages/Sorting/SortingRoutes'
+import { CodeExecution, SortingRoutes } from './pages'
 
 // <ErrorBoundary errorName="default">
 const Routing = () => {
@@ -11,10 +11,11 @@ const Routing = () => {
       <Navigation />
       <Switch>
         <Route exact path={['/']} render={() => <>Hello TEST</>} />
-        <Route path={['/sorting', '/sorting/:id']} render={SortingRoutes} />
+        <Route path={['/sorting', '/sorting/:id']} component={SortingRoutes} />
+        <Route path={['/code-execution']} component={CodeExecution} />
         <Route
           path={['/data-structures', '/data-structures/:id']}
-          render={SortingRoutes}
+          component={SortingRoutes}
         />
         <Route render={() => <>Not Found</>} />
       </Switch>
