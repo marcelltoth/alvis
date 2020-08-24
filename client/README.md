@@ -47,6 +47,9 @@ wallet creator
 firebase/relational database
 authorisation and authentication
 
+System design
+Put pieces in predefined slots or connect them up with wires to see if it is the correct way of building a system.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

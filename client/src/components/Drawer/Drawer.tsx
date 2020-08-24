@@ -34,13 +34,15 @@ const menuItems = [
   { text: 'Machine learning', icon: <ShowChartIcon /> },
   { text: 'System design', icon: <SettingsApplicationsTwoToneIcon /> },
   {
-    text: 'Web development',
+    text: 'General knowledge',
     icon: <SettingsApplicationsTwoToneIcon />,
     children: [
       { text: 'HTTPS', icon: <AcUnitIcon />, onClick: () => {} },
       { text: 'Authentication', icon: <SortIcon /> },
     ],
   },
+  { text: 'Security', icon: <SettingsApplicationsTwoToneIcon /> },
+  { text: 'Testing', icon: <SettingsApplicationsTwoToneIcon /> },
   { text: 'GMAT', icon: <SettingsApplicationsTwoToneIcon /> },
 ]
 
