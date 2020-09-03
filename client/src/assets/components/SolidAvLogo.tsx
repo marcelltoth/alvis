@@ -12,68 +12,6 @@ function SvgSolidAvLogo(props: React.SVGProps<SVGSVGElement>) {
       {...props}
     >
       <defs>
-        {/* <linearGradient id="MyGradient">
-          <stop offset="0%" stop-color="#aa076b">
-            <animate
-              id="a1"
-              attributeName="stop-color"
-              values="#aa076b; #79c98c"
-              begin="0; a2.end"
-              dur="3s"
-            />
-            <animate
-              id="a2"
-              attributeName="stop-color"
-              values="#79c98c; #aa076b"
-              begin="a1.end"
-              dur="3s"
-            />
-            <animate
-              id="a3"
-              attributeName="stop-color"
-              values="#79c98c; #aa076b"
-              begin="0; a4.end"
-              dur="3s"
-            />
-            <animate
-              id="a4"
-              attributeName="stop-color"
-              values="#aa076b; #79c98c"
-              begin="a3.end"
-              dur="3s"
-            />
-            <animate
-              id="a1"
-              attributeName="stop-color"
-              values="#aa076b; #61045f"
-              begin="0; a2.end"
-              dur="3s"
-            />
-            <animate
-              id="a2"
-              attributeName="stop-color"
-              values="#61045f; #aa076b"
-              begin="a1.end"
-              dur="3s"
-            />
-            <animate
-              id="a1"
-              attributeName="stop-color"
-              values="#ed4264; #ffedbc"
-              begin="0; a2.end"
-              dur="3s"
-            />
-            <animate
-              id="a2"
-              attributeName="stop-color"
-              values="#ffedbc; #ed4264"
-              begin="a1.end"
-              dur="3s"
-            />
-          </stop>
-         
-        </linearGradient> */}
-
         <path
           d="M618.06 0C630.18 0 640 9.82 640 21.94v596.12c0 12.12-9.82 21.94-21.94 21.94H21.94C9.82 640 0 630.18 0 618.06V21.94C0 9.82 9.82 0 21.94 0h596.12z"
           id="SolidAVLogo_svg__a"
