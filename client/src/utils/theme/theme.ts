@@ -15,7 +15,7 @@ export type ThemeType = {
   breakpoints: string[]
   boxShadow: string
   clientBoxShadow: string
-  colours: {
+  colors: {
     base: string
     baseMid: string
     baseLight: string
@@ -131,7 +131,7 @@ export const theme = {
   breakpoints: ['950px', '1024px'],
   boxShadow: '0px 4px 6px 0px rgba(0, 0, 0, 0.2)',
   clientBoxShadow: '0px 4px 10px rgba(28, 36, 82, 0.1)',
-  colours: {
+  colors: {
     base: '#444444',
     baseMid: '#71747E',
     baseLight: '#D7DAE0',
