@@ -1,70 +1,87 @@
-import { Request, Response, Router } from 'express'
-import { BAD_REQUEST, CREATED, OK } from 'http-status-codes'
-import { ParamsDictionary } from 'express-serve-static-core'
-const { spawn } = require('child_process')
+import { Request, Response, Router } from "express";
+import { BAD_REQUEST, CREATED, OK } from "http-status-codes";
+import { ParamsDictionary } from "express-serve-static-core";
+const { spawn } = require("child_process");
 
-import { paramMissingError } from '@shared/constants'
-import expressWs from 'express-ws'
+import { paramMissingError } from "@shared/constants";
+import expressWs from "express-ws";
 
-const CDP = require('chrome-remote-interface')
+const CDP = require("chrome-remote-interface");
 
 // Init shared
-const router = Router() as expressWs.Router
+const router = Router() as expressWs.Router;
 
-router.get('/health', async (req: Request, res: Response) => {
-  return res.status(OK).json()
-})
+router.get("/health", async (req: Request, res: Response) => {
+  return res.status(OK).json();
+});
 
 // --inspect-brk=9222
 // node /Users/pricet/Documents/alvis/node_modules/chrome-remote-interface/bin/client.js inspect
 // const child = execSync('node', ['--inspect-brk=9222'])
-const ls = spawn('node', ['--inspect-brk=9222'])
+
+// spawn docker container with the right node instance
+// https://github.com/StepicOrg/epicbox
+const ls = spawn("node", ["--inspect-brk=9222"]);
 // const a = spawnSync('node', ['--inspect-brk=9222'])
+
+// global list of docker containers (session cookies)
+//
 
 // child.kill()
 // a.kill()
 // ls.kill()
 
-router.post('/execute-code', async (req: Request, res: Response) => {
-  let client
+// Two main methods
+// - record events with two sets of breakpoints, one for the user and then another to record the code
+// - get the events from running the code and printing json
+
+// start a framework, where the user should write something
+// generate the array they're working on
+// list of events, display which would run through that, backwards and forwards
+
+router.post("/execute-code", async (req: Request, res: Response) => {
+  let client;
   try {
     // connect to endpoint
-    client = await CDP()
+    client = await CDP();
     // extract domains
-    const { Debugger, Runtime } = client
-    await Runtime.enable()
-    await Debugger.enable()
-    await Debugger.pause()
+    const { Debugger, Runtime } = client;
+    await Runtime.enable();
+    await Debugger.enable();
+    await Debugger.pause();
 
     const { scriptId } = await Runtime.compileScript({
-      expression: '42',
-      sourceURL: 'http://localhost',
+      expression: "42",
+      sourceURL: "http://localhost",
       persistScript: true,
-    })
+    });
 
-    await Debugger.setBreakpoint({ location: { scriptId, lineNumber: 0 } })
+    await Debugger.setBreakpoint({ location: { scriptId, lineNumber: 0 } });
 
     Debugger.paused((x: any) => {
       // console.log('Debugger.paused', x)
       // Debugger.resume()
-    })
+    });
 
-    const runScript = await Runtime.runScript({ scriptId, returnByValue: true })
+    const runScript = await Runtime.runScript({
+      scriptId,
+      returnByValue: true,
+    });
 
-    await Debugger.setBreakpointsActive({ active: true })
+    await Debugger.setBreakpointsActive({ active: true });
 
-    Debugger.pause()
+    Debugger.pause();
 
     // console.log('runScript', runScript)
 
     // const res = await Runtime.evaluate({ expression: '42' })
 
-    console.log('res', res)
+    console.log("res", res);
   } catch (err) {
-    console.error(err)
+    console.error(err);
   } finally {
     if (client) {
-      await client.close()
+      await client.close();
     }
   }
 
@@ -76,10 +93,10 @@ router.post('/execute-code', async (req: Request, res: Response) => {
   //   }
   //   await userDao.add(user)
   //   return res.status(CREATED).end()
-  return res.status(OK).json()
-})
+  return res.status(OK).json();
+});
 
-export default router
+export default router;
 
 // Runtime.compileScript({"expression": "42", "sourceURL": "http://localhost", "persistScript": true})
 // Debugger.setBreakpoint({"location": {"scriptId": "95", "lineNumber": 0}})
