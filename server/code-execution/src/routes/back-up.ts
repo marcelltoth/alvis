@@ -6,8 +6,6 @@ const { spawn } = require("child_process");
 import { paramMissingError } from "@shared/constants";
 import expressWs from "express-ws";
 
-import { executeJsInContainer } from "./dockerode";
-
 const CDP = require("chrome-remote-interface");
 
 // Init shared
@@ -41,18 +39,61 @@ const ls = spawn("node", ["--inspect-brk=9222"]);
 // generate the array they're working on
 // list of events, display which would run through that, backwards and forwards
 
-// - create the file from the code in the browser
-// - run the docker the container
-// - connect to the debugger from the code OR dump the results from the container to some file in each iteration
-// - expose the debugger container as an endpoint
-
-// docker run --rm -p 9229:9229 -v /Users/pricet/Desktop:/tmp/source node node --inspect-brk=0.0.0.0 /tmp/source/hello.js
 router.post("/execute-code", async (req: Request, res: Response) => {
-  console.log(req.body);
-  const body = req.body;
-  const result = await executeJsInContainer(body.code);
+  let client;
+  try {
+    // connect to endpoint
+    client = await CDP();
+    // extract domains
+    const { Debugger, Runtime } = client;
+    await Runtime.enable();
+    await Debugger.enable();
+    await Debugger.pause();
 
-  return res.status(OK).json({ result });
+    const { scriptId } = await Runtime.compileScript({
+      expression: "42",
+      sourceURL: "http://localhost",
+      persistScript: true,
+    });
+
+    await Debugger.setBreakpoint({ location: { scriptId, lineNumber: 0 } });
+
+    Debugger.paused((x: any) => {
+      // console.log('Debugger.paused', x)
+      // Debugger.resume()
+    });
+
+    const runScript = await Runtime.runScript({
+      scriptId,
+      returnByValue: true,
+    });
+
+    await Debugger.setBreakpointsActive({ active: true });
+
+    Debugger.pause();
+
+    // console.log('runScript', runScript)
+
+    // const res = await Runtime.evaluate({ expression: '42' })
+
+    console.log("res", res);
+  } catch (err) {
+    console.error(err);
+  } finally {
+    if (client) {
+      await client.close();
+    }
+  }
+
+  //   const { user } = req.body
+  //   if (!user) {
+  //     return res.status(BAD_REQUEST).json({
+  //       error: paramMissingError,
+  //     })
+  //   }
+  //   await userDao.add(user)
+  //   return res.status(CREATED).end()
+  return res.status(OK).json();
 });
 
 export default router;
