@@ -14,7 +14,15 @@ import { useStyles } from './Drawer.styles'
 import IconButton from '@material-ui/core/IconButton'
 import WavesIcon from '@material-ui/icons/Waves'
 import ShowChartIcon from '@material-ui/icons/ShowChart'
+import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects'
+import EmojiSymbolsIcon from '@material-ui/icons/EmojiSymbols'
 import WidgetsIcon from '@material-ui/icons/Widgets'
+import FormatAlignCenterIcon from '@material-ui/icons/FormatAlignCenter'
+import LockOpenIcon from '@material-ui/icons/LockOpen'
+import CloudIcon from '@material-ui/icons/Cloud'
+import FunctionsIcon from '@material-ui/icons/Functions'
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney'
+import WebIcon from '@material-ui/icons/Web'
 import { Typography } from '@material-ui/core'
 import { SolidAvLogo } from '../../assets'
 import { ControlledAccordions } from '../ControlledAccordions'
@@ -30,20 +38,24 @@ const menuItems = [
       { text: 'Searching', icon: <FindInPageIcon /> },
     ],
   },
+  { text: 'Data structures', icon: <FormatAlignCenterIcon /> },
   { text: 'Quantum', icon: <WavesIcon /> },
   { text: 'Machine learning', icon: <ShowChartIcon /> },
   { text: 'System design', icon: <SettingsApplicationsTwoToneIcon /> },
   {
     text: 'General knowledge',
-    icon: <SettingsApplicationsTwoToneIcon />,
+    icon: <EmojiObjectsIcon />,
     children: [
       { text: 'HTTPS', icon: <AcUnitIcon />, onClick: () => {} },
       { text: 'Authentication', icon: <SortIcon /> },
     ],
   },
-  { text: 'Security', icon: <SettingsApplicationsTwoToneIcon /> },
-  { text: 'Testing', icon: <SettingsApplicationsTwoToneIcon /> },
-  { text: 'GMAT', icon: <SettingsApplicationsTwoToneIcon /> },
+  { text: 'Security', icon: <LockOpenIcon /> },
+  { text: 'Testing', icon: <EmojiSymbolsIcon /> },
+  { text: 'GMAT', icon: <FunctionsIcon /> },
+  { text: 'CFA', icon: <AttachMoneyIcon /> },
+  { text: 'Cloud computing', icon: <CloudIcon /> },
+  { text: 'Web development', icon: <WebIcon /> },
 ]
 
 type Props = {}

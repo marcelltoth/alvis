@@ -10,6 +10,8 @@ https://www.makinguse.com/
 http://www.algolist.net/Programming_concepts/Recursion
 
 https://practice.geeksforgeeks.org/problems/maximum-money2855/1/?company[]=Amazon&page=1&query=company[]Amazonpage1
+
+producthunt
 -->
 
 build a tree and graph animation equivalent for sorting and searching
@@ -21,6 +23,9 @@ Code executor navigation bar
 hide nav on code-execution
 drag and drop code execution windows
 make responsive
+reset reflex
+search functionality for pages
+create content block like on algoexpert
 
 Add to LinkedIn Learning
 

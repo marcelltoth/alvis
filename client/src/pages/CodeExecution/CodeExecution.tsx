@@ -25,6 +25,7 @@ import {
 import { UnControlled as CodeMirror } from 'react-codemirror2'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/material.css'
+import { ReflexElementInnerContainer } from './CodeExecution.styles'
 require('codemirror/mode/javascript/javascript')
 
 const useStyles = makeStyles((theme) => ({
@@ -43,9 +44,7 @@ const useStyles = makeStyles((theme) => ({
   innerGrid: {
     justifyContent: 'center',
   },
-  innerReflexElement: {
-    padding: theme.custom.spacers.size4,
-  },
+  innerReflexElement: {},
 }))
 
 // how to make each card larger on drag?
@@ -61,6 +60,7 @@ const horizontalSplitterStyle = {
 const splitterStyle = {
   border: 'none',
   boxShadow: `0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)`,
+  background: 'transparent',
 }
 
 const CodeExecution = () => {
@@ -77,21 +77,27 @@ const CodeExecution = () => {
       <ReflexContainer orientation="vertical">
         <ReflexElement minSize={50}>
           <ReflexContainer orientation="horizontal">
-            <ReflexElement className={classes.innerReflexElement} minSize={50}>
-              <div className="pane-content">
-                <label>Top Pane</label>
-              </div>
-              <button onClick={() => setVerticalSize({ '1': 400 })}>set</button>
+            <ReflexElement minSize={50}>
+              <ReflexElementInnerContainer>
+                <div className="pane-content">
+                  <label>Top Pane</label>
+                </div>
+                <button onClick={() => setVerticalSize({ '1': 400 })}>
+                  set
+                </button>
+              </ReflexElementInnerContainer>
             </ReflexElement>
 
             <ReflexSplitter
               style={{ ...splitterStyle, ...horizontalSplitterStyle }}
             />
 
-            <ReflexElement className={classes.innerReflexElement} minSize={50}>
-              <div className="pane-content">
-                <label>Bottom Pane</label>
-              </div>
+            <ReflexElement minSize={50}>
+              <ReflexElementInnerContainer>
+                <div className="pane-content">
+                  <label>Bottom Pane</label>
+                </div>
+              </ReflexElementInnerContainer>
             </ReflexElement>
           </ReflexContainer>
         </ReflexElement>
@@ -102,29 +108,34 @@ const CodeExecution = () => {
 
         <ReflexElement minSize={50}>
           <ReflexContainer orientation="horizontal">
-            <ReflexElement className={classes.innerReflexElement} minSize={50}>
-              <CodeMirror
-                value="<h1>I ♥ react-codemirror2</h1>"
-                options={{
-                  theme: 'default',
-                  mode: 'javascript',
-                  lineNumbers: true,
-                  style: {
-                    height: '100%',
-                  },
-                }}
-                onChange={(editor, data, value) => {}}
-              />
+            <ReflexElement minSize={50}>
+              <ReflexElementInnerContainer>
+                <CodeMirror
+                  value="<h1>I ♥ react-codemirror2</h1>"
+                  options={{
+                    theme: 'default',
+                    mode: 'javascript',
+                    lineNumbers: true,
+                    spellcheck: true,
+                    style: {
+                      height: '100%',
+                    },
+                  }}
+                  onChange={(editor, data, value) => {}}
+                />
+              </ReflexElementInnerContainer>
             </ReflexElement>
 
             <ReflexSplitter
               style={{ ...splitterStyle, ...horizontalSplitterStyle }}
             />
 
-            <ReflexElement className={classes.innerReflexElement} minSize={50}>
-              <div className="pane-content">
-                <label>Bottom Pane</label>
-              </div>
+            <ReflexElement minSize={50}>
+              <ReflexElementInnerContainer>
+                <div className="pane-content">
+                  <label>Bottom Pane</label>
+                </div>{' '}
+              </ReflexElementInnerContainer>
             </ReflexElement>
           </ReflexContainer>
         </ReflexElement>

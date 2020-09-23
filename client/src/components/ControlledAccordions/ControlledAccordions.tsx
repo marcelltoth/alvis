@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme: Theme) =>
         backgroundColor: rgba(0, 0, 0, 0.1),
       },
     },
+    summary: {
+      padding: '0px 4px',
+    },
   })
 )
 
@@ -57,6 +60,7 @@ function ControlledAccordions({ children, title, id }: Props) {
         onChange={handleChange(id)}
       >
         <AccordionSummary
+          classes={{ root: classes.summary }}
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1bh-content"
           id="panel1bh-header"

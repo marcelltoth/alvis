@@ -13,6 +13,7 @@ export const GlobalCodeMirrorStyles = createGlobalStyle<{ theme: ThemeType }>`
     .cm-s-default {
         background: transparent;
         min-height: 100%;
+        height: 100%;
         .CodeMirror-gutters {
             background: transparent;
         }
