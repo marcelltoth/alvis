@@ -21,12 +21,21 @@ import {
   Reflex,
   FirsReflextElement,
   SecondReflexElement,
+  HorizontalTabs,
 } from '../../components'
 import { UnControlled as CodeMirror } from 'react-codemirror2'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/material.css'
 import { ReflexElementInnerContainer } from './CodeExecution.styles'
+import 'codemirror/lib/codemirror.js'
 require('codemirror/mode/javascript/javascript')
+require('codemirror/addon/edit/matchbrackets')
+require('codemirror/addon/edit/closebrackets')
+require('codemirror/addon/runmode/runmode')
+require('codemirror/addon/runmode/colorize')
+require('codemirror/addon/hint/javascript-hint')
+require('codemirror/addon/lint/lint')
+require('codemirror/addon/lint/javascript-lint')
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -111,12 +120,15 @@ const CodeExecution = () => {
             <ReflexElement minSize={50}>
               <ReflexElementInnerContainer>
                 <CodeMirror
-                  value="<h1>I ♥ react-codemirror2</h1>"
+                  value={`const func = () => console.log('HELLO')
+func()`}
                   options={{
                     theme: 'default',
                     mode: 'javascript',
                     lineNumbers: true,
                     spellcheck: true,
+                    matchBrackets: true,
+                    autoCloseBrackets: true,
                     style: {
                       height: '100%',
                     },
@@ -132,25 +144,13 @@ const CodeExecution = () => {
 
             <ReflexElement minSize={50}>
               <ReflexElementInnerContainer>
-                <div className="pane-content">
-                  <label>Bottom Pane</label>
-                </div>{' '}
+                <HorizontalTabs></HorizontalTabs>
               </ReflexElementInnerContainer>
             </ReflexElement>
           </ReflexContainer>
         </ReflexElement>
       </ReflexContainer>
     </>
-    // <Grid container spacing={1} className={classes.outerGrid}>
-    //   <Grid container item xs={12} spacing={1} className={classes.innerGrid}>
-    //     <Grid item lg={6} md={6} xs={12}>
-    //       <CodeExecutionPanel />
-    //     </Grid>
-    //     <Grid item lg={6} md={6} xs={12}>
-    //       <CodeExecutionPanel />
-    //     </Grid>
-    //   </Grid>
-    // </Grid>
   )
 }
 

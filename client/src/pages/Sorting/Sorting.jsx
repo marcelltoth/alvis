@@ -31,6 +31,17 @@ const Sorting = () => {
     open ? 0.1 : 0.6,
   ])
 
+  // <Grid container spacing={1} className={classes.outerGrid}>
+  //   <Grid container item xs={12} spacing={1} className={classes.innerGrid}>
+  //     <Grid item lg={6} md={6} xs={12}>
+  //       <CodeExecutionPanel />
+  //     </Grid>
+  //     <Grid item lg={6} md={6} xs={12}>
+  //       <CodeExecutionPanel />
+  //     </Grid>
+  //   </Grid>
+  // </Grid>
+
   return (
     <Container maxWidth="xl">
       <InnerContainer

@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-function FullWidthTabs() {
+function HorizontalTabs() {
   const classes = useStyles()
   const theme = useTheme()
   const [value, setValue] = React.useState(0)
@@ -96,4 +96,4 @@ function FullWidthTabs() {
   )
 }
 
-export default FullWidthTabs
+export default HorizontalTabs

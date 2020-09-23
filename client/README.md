@@ -26,6 +26,8 @@ make responsive
 reset reflex
 search functionality for pages
 create content block like on algoexpert
+Prevent offscreen elements
+highlighting syntax
 
 Add to LinkedIn Learning
 
