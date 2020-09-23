@@ -8,13 +8,15 @@ export type ThemeType = {
   boxShadow: string
   clientBoxShadow: string
   colors: {
+    hover: string
+    active: string
     base: string
+    baseDark: string
     baseMid: string
     baseLight: string
     baseExtraLight: string
 
     primary: string
-    hover: string
     pressed: string
     danger: string
     success: string
@@ -125,13 +127,15 @@ export const theme = {
   boxShadow: '0px 4px 6px 0px rgba(0, 0, 0, 0.2)',
   clientBoxShadow: '0px 4px 10px rgba(28, 36, 82, 0.1)',
   colors: {
+    hover: 'hsla(0, 0%, 100%, 0.07)',
+    active: 'hsla(0, 0%, 100%, 0.2)',
     base: '#444444',
-    baseMid: '#71747E',
+    baseDark: '#71747E',
+    baseMid: '#a9abb2',
     baseLight: '#D7DAE0',
     baseExtraLight: '#F5F6FA',
 
     primary: '#0E4EFB',
-    hover: '#507FFF',
     pressed: '#0035C5',
     danger: '#CC0700',
     success: '#007B46',
@@ -232,7 +236,7 @@ export const theme = {
     small: '320px',
     medium: '480px',
     large: '800px',
-    extraLarge: '1280px',
+    extraLarge: '98%',
     fullScreen: '100vh',
     mediumBreakpoint: 768,
   },

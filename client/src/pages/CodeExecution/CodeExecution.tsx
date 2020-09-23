@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import classNames from 'classnames'
 
 import { map, range, random } from 'lodash'
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
+import { makeStyles, createStyles, Theme, fade } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
@@ -17,17 +17,20 @@ import {
 } from 'react-reflex'
 import 'react-reflex/styles.css'
 
-import {
-  Reflex,
-  FirsReflextElement,
-  SecondReflexElement,
-  HorizontalTabs,
-} from '../../components'
+import { Wrapper } from '../../components'
 import { UnControlled as CodeMirror } from 'react-codemirror2'
+import { ReflexElementInnerContainer } from './CodeExecution.styles'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Button from '@material-ui/core/Button'
+
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/material.css'
-import { ReflexElementInnerContainer } from './CodeExecution.styles'
 import 'codemirror/lib/codemirror.js'
+import CodeExecutionPanelAppBar, {
+  CodeExecutionPanelAppBarButton,
+} from './CodeExecutionPanelAppBar'
+import styled from 'styled-components'
 require('codemirror/mode/javascript/javascript')
 require('codemirror/addon/edit/matchbrackets')
 require('codemirror/addon/edit/closebrackets')
@@ -53,7 +56,37 @@ const useStyles = makeStyles((theme) => ({
   innerGrid: {
     justifyContent: 'center',
   },
-  innerReflexElement: {},
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+  toolbarGutters: {
+    padding: '0px 4px',
+  },
+  toolbarRegular: {
+    minHeight: '24px',
+    height: '32px',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    backgroundColor: theme.custom.colors.background,
+  },
+  toolbarButton: {
+    padding: '2px 10px',
+    backgroundColor: theme.custom.colors.baseMid,
+    '&:active': {
+      backgroundColor: theme.custom.colors.active,
+      color: theme.custom.colors.baseDark,
+    },
+    '&:hover': {
+      backgroundColor: theme.custom.colors.hover,
+      color: theme.custom.colors.baseDark,
+    },
+  },
 }))
 
 // how to make each card larger on drag?
@@ -72,6 +105,11 @@ const splitterStyle = {
   background: 'transparent',
 }
 
+const ReflexElementPane = styled(ReflexElement)`
+  display: flex;
+  flex-direction: column;
+`
+
 const CodeExecution = () => {
   const [verticalSize, setVerticalSize] = useState<any>({
     '1': window.innerWidth / 2,
@@ -82,11 +120,12 @@ const CodeExecution = () => {
   const classes = useStyles()
 
   return (
-    <>
+    <Wrapper>
       <ReflexContainer orientation="vertical">
         <ReflexElement minSize={50}>
           <ReflexContainer orientation="horizontal">
-            <ReflexElement minSize={50}>
+            <ReflexElementPane minSize={50}>
+              <CodeExecutionPanelAppBar></CodeExecutionPanelAppBar>
               <ReflexElementInnerContainer>
                 <div className="pane-content">
                   <label>Top Pane</label>
@@ -95,19 +134,20 @@ const CodeExecution = () => {
                   set
                 </button>
               </ReflexElementInnerContainer>
-            </ReflexElement>
+            </ReflexElementPane>
 
             <ReflexSplitter
               style={{ ...splitterStyle, ...horizontalSplitterStyle }}
             />
 
-            <ReflexElement minSize={50}>
+            <ReflexElementPane minSize={50}>
+              <CodeExecutionPanelAppBar></CodeExecutionPanelAppBar>
               <ReflexElementInnerContainer>
                 <div className="pane-content">
                   <label>Bottom Pane</label>
                 </div>
               </ReflexElementInnerContainer>
-            </ReflexElement>
+            </ReflexElementPane>
           </ReflexContainer>
         </ReflexElement>
 
@@ -117,11 +157,31 @@ const CodeExecution = () => {
 
         <ReflexElement minSize={50}>
           <ReflexContainer orientation="horizontal">
-            <ReflexElement minSize={50}>
+            <ReflexElementPane minSize={50}>
+              <CodeExecutionPanelAppBar>
+                <CodeExecutionPanelAppBarButton>
+                  Run
+                </CodeExecutionPanelAppBarButton>
+              </CodeExecutionPanelAppBar>
               <ReflexElementInnerContainer>
                 <CodeMirror
                   value={`const func = () => console.log('HELLO')
-func()`}
+func()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+`}
                   options={{
                     theme: 'default',
                     mode: 'javascript',
@@ -136,21 +196,26 @@ func()`}
                   onChange={(editor, data, value) => {}}
                 />
               </ReflexElementInnerContainer>
-            </ReflexElement>
+            </ReflexElementPane>
 
             <ReflexSplitter
               style={{ ...splitterStyle, ...horizontalSplitterStyle }}
             />
 
-            <ReflexElement minSize={50}>
+            <ReflexElementPane minSize={50}>
+              <CodeExecutionPanelAppBar>
+                <CodeExecutionPanelAppBarButton>
+                  Submit
+                </CodeExecutionPanelAppBarButton>
+              </CodeExecutionPanelAppBar>
               <ReflexElementInnerContainer>
-                <HorizontalTabs></HorizontalTabs>
+                Bottom Right
               </ReflexElementInnerContainer>
-            </ReflexElement>
+            </ReflexElementPane>
           </ReflexContainer>
         </ReflexElement>
       </ReflexContainer>
-    </>
+    </Wrapper>
   )
 }
 

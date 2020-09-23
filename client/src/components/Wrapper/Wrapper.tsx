@@ -24,7 +24,7 @@ type Props = {
 
 const StyledDiv = styled.main`
   margin: auto;
-  width: 90%;
+  width: 100%;
   height: ${({ isFullHeight }: StyledDivType) =>
     isFullHeight ? '100%' : 'auto'};
   max-width: ${({ width }: StyledDivType) => width};

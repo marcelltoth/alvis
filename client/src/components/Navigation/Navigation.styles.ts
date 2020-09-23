@@ -4,9 +4,10 @@ import { transparentize } from 'polished'
 export const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    zIndex: theme.custom.zIndex + 1,
   },
   muiAppBar: {
-    backgroundColor: theme.palette.common.white,
+    backgroundColor: theme.custom.colors.background,
     // position: 'fixed',
     top: 0,
     left: 0,
