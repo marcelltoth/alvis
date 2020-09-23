@@ -27,7 +27,7 @@ import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/material.css'
 require('codemirror/mode/javascript/javascript')
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   paper: {
     display: 'grid',
     gridGap: '0.1rem',
@@ -43,7 +43,10 @@ const useStyles = makeStyles({
   innerGrid: {
     justifyContent: 'center',
   },
-})
+  innerReflexElement: {
+    padding: theme.custom.spacers.size4,
+  },
+}))
 
 // how to make each card larger on drag?
 
@@ -74,7 +77,7 @@ const CodeExecution = () => {
       <ReflexContainer orientation="vertical">
         <ReflexElement minSize={50}>
           <ReflexContainer orientation="horizontal">
-            <ReflexElement minSize={50}>
+            <ReflexElement className={classes.innerReflexElement} minSize={50}>
               <div className="pane-content">
                 <label>Top Pane</label>
               </div>
@@ -85,7 +88,7 @@ const CodeExecution = () => {
               style={{ ...splitterStyle, ...horizontalSplitterStyle }}
             />
 
-            <ReflexElement minSize={50}>
+            <ReflexElement className={classes.innerReflexElement} minSize={50}>
               <div className="pane-content">
                 <label>Bottom Pane</label>
               </div>
@@ -99,7 +102,7 @@ const CodeExecution = () => {
 
         <ReflexElement minSize={50}>
           <ReflexContainer orientation="horizontal">
-            <ReflexElement minSize={50}>
+            <ReflexElement className={classes.innerReflexElement} minSize={50}>
               <CodeMirror
                 value="<h1>I ♥ react-codemirror2</h1>"
                 options={{
@@ -118,7 +121,7 @@ const CodeExecution = () => {
               style={{ ...splitterStyle, ...horizontalSplitterStyle }}
             />
 
-            <ReflexElement minSize={50}>
+            <ReflexElement className={classes.innerReflexElement} minSize={50}>
               <div className="pane-content">
                 <label>Bottom Pane</label>
               </div>

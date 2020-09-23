@@ -1,15 +1,6 @@
 import { rem } from 'polished'
-import { createMuiTheme } from '@material-ui/core/styles'
-
-export const muiTheme = createMuiTheme({
-  typography: {
-    fontFamily: `"Roboto", "Helvetica", "Arial", sans-serif`,
-    fontSize: 14,
-    fontWeightLight: 300,
-    fontWeightRegular: 400,
-    fontWeightMedium: 500,
-  },
-})
+import { createMuiTheme, ThemeOptions } from '@material-ui/core/styles'
+import '../../types.d.ts'
 
 export type ThemeType = {
   zIndex: number
@@ -246,3 +237,19 @@ export const theme = {
     mediumBreakpoint: 768,
   },
 }
+
+export const createMyTheme = (options: ThemeOptions) => {
+  return createMuiTheme({
+    typography: {
+      fontFamily: `"Roboto", "Helvetica", "Arial", sans-serif`,
+      fontSize: 14,
+      fontWeightLight: 300,
+      fontWeightRegular: 400,
+      fontWeightMedium: 500,
+    },
+    custom: theme,
+    ...options,
+  })
+}
+
+export const muiTheme = createMyTheme({})
