@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import CodeExecutionEditorPanel from './CodeExecutionEditorPanel'
+import { Reflex, FirsReflextElement, SecondReflexElement } from 'components'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -44,14 +45,16 @@ const CodeExecutionPanel = () => {
   const bull = <span className={classes.bullet}>•</span>
 
   return (
-    <Card className={classes.root}>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-      <CardContent className={classes.content}>
-        <CodeExecutionEditorPanel />
-      </CardContent>
-    </Card>
+    <div>kndf</div>
+    // <Card className={classes.root}>
+    //   <CardActions>
+    //     <Button size="small">Learn More</Button>
+    //   </CardActions>
+    //   <CardContent className={classes.content}>
+
+    //   </CardContent>
+    // </Card>
+    // <CodeExecutionEditorPanel />
   )
 }
 export default CodeExecutionPanel

@@ -10,6 +10,8 @@ https://www.makinguse.com/
 http://www.algolist.net/Programming_concepts/Recursion
 -->
 
+http://qnimate.com/create-an-frontend-editor-with-code-highlighting-and-execution/
+
 // visualise complexity
 // debugger
 // algorithms

@@ -10,13 +10,13 @@ import App from './App'
 import { muiTheme, theme } from './utils'
 
 const Root = hot(() => (
-  <React.StrictMode>
-    <MuiThemeProvider theme={muiTheme}>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
-    </MuiThemeProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <MuiThemeProvider theme={muiTheme}>
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
+  </MuiThemeProvider>
+  // </React.StrictMode>
 ))
 
 ReactDOM.render(<Root />, document.getElementById('root'))

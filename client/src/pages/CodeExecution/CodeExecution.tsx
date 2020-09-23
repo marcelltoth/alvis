@@ -7,6 +7,19 @@ import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import CodeExecutionPanel from './CodeExecutionPanel'
+import {
+  ReflexContainer,
+  ReflexElement,
+  ReflexSplitter,
+  ReflexHandle,
+} from 'react-reflex'
+import 'react-reflex/styles.css'
+
+import {
+  Reflex,
+  FirsReflextElement,
+  SecondReflexElement,
+} from '../../components'
 
 const useStyles = makeStyles({
   paper: {
@@ -28,29 +41,124 @@ const useStyles = makeStyles({
 
 // how to make each card larger on drag?
 
+const verticalSplitterStyle = {
+  width: '10px',
+  zIndex: 0,
+}
+const horizontalSplitterStyle = {
+  height: '10px',
+}
+
+const splitterStyle = {
+  border: 'none',
+  boxShadow: `0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)`,
+}
+
 const CodeExecution = () => {
   const classes = useStyles()
 
   return (
-    <Grid container spacing={1} className={classes.outerGrid}>
-      <Grid container item xs={12} spacing={1} className={classes.innerGrid}>
-        <Grid item lg={6} md={6} xs={12}>
-          <CodeExecutionPanel />
-        </Grid>
-        <Grid item lg={6} md={6} xs={12}>
-          <CodeExecutionPanel />
-        </Grid>
-      </Grid>
+    // <Reflex
+    //   first={
+    //     <FirsReflextElement>
+    //       <div></div>
+    //     </FirsReflextElement>
+    //   }
+    //   second={
+    //     <SecondReflexElement>
+    //       <div>HELLO</div>
+    //     </SecondReflexElement>
+    //   }
+    // />
+    <ReflexContainer orientation="vertical">
+      <ReflexElement minSize={50}>
+        <div className="handle">Top Pane Header</div>
+        <div className="pane-content">
+          <label>Top Pane</label>
+        </div>
 
-      <Grid container item xs={12} spacing={1} className={classes.innerGrid}>
-        <Grid item lg={6} md={6} xs={12}>
-          <CodeExecutionPanel />
-        </Grid>
-        <Grid item lg={6} md={6} xs={12}>
-          <CodeExecutionPanel />
-        </Grid>
-      </Grid>
-    </Grid>
+        <ReflexContainer orientation="horizontal">
+          <ReflexElement minSize={50}>
+            <div className="handle">Top Pane Header</div>
+            <div className="pane-content">
+              <label>Top Pane</label>
+            </div>
+          </ReflexElement>
+
+          <ReflexSplitter
+            style={{ ...splitterStyle, ...horizontalSplitterStyle }}
+          />
+
+          <ReflexElement minSize={50}>
+            <ReflexHandle className="handle">
+              Bottom Pane Header: I am a draggable handle! Drag me to resize ...
+            </ReflexHandle>
+            <div className="pane-content">
+              <label>Bottom Pane</label>
+            </div>
+          </ReflexElement>
+        </ReflexContainer>
+      </ReflexElement>
+
+      <ReflexSplitter style={{ ...splitterStyle, ...verticalSplitterStyle }} />
+
+      <ReflexElement minSize={50}>
+        <ReflexHandle className="handle">
+          Bottom Pane Header: I am a draggable handle! Drag me to resize ...
+        </ReflexHandle>
+        <div className="pane-content">
+          <label>Bottom Pane</label>
+        </div>
+        <ReflexContainer orientation="horizontal">
+          <ReflexElement minSize={50}>
+            <div className="handle">Top Pane Header</div>
+            <div className="pane-content">
+              <label>Top Pane</label>
+            </div>
+          </ReflexElement>
+
+          <ReflexSplitter
+            style={{ ...splitterStyle, ...horizontalSplitterStyle }}
+          />
+
+          <ReflexElement minSize={36}>
+            <ReflexHandle className="handle">
+              Bottom Pane Header: I am a draggable handle! Drag me to resize ...
+            </ReflexHandle>
+            <div className="pane-content">
+              <label>Bottom Pane</label>
+            </div>
+          </ReflexElement>
+        </ReflexContainer>
+      </ReflexElement>
+    </ReflexContainer>
+    // <CodeExecutionPanel />
+    // <div
+    //   style={{
+    //     height: '100%',
+    //   }}
+    // >
+
+    // </div>
+    // <Grid container spacing={1} className={classes.outerGrid}>
+    //   <Grid container item xs={12} spacing={1} className={classes.innerGrid}>
+    //     <Grid item lg={6} md={6} xs={12}>
+
+    //     </Grid>
+    //     <Grid item lg={6} md={6} xs={12}>
+    //       <CodeExecutionPanel />
+    //     </Grid>
+    //   </Grid>
+
+    //   <Grid container item xs={12} spacing={1} className={classes.innerGrid}>
+    //     <Grid item lg={6} md={6} xs={12}>
+    //       <CodeExecutionPanel />
+    //     </Grid>
+    //     <Grid item lg={6} md={6} xs={12}>
+    //       <CodeExecutionPanel />
+    //     </Grid>
+    //   </Grid>
+    // </Grid>
   )
 }
 

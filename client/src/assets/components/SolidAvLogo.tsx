@@ -1,6 +1,10 @@
 import * as React from 'react'
 
-function SvgSolidAvLogo(props: React.SVGProps<SVGSVGElement>) {
+function SvgSolidAvLogo({
+  width,
+  viewBox,
+  height,
+}: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       style={{
@@ -9,7 +13,7 @@ function SvgSolidAvLogo(props: React.SVGProps<SVGSVGElement>) {
       }}
       width={640}
       height={640}
-      {...props}
+      {...{ width, viewBox, height }}
     >
       <defs>
         <path
