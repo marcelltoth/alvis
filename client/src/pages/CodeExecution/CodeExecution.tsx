@@ -72,14 +72,8 @@ const CodeExecution = () => {
     // />
     <ReflexContainer orientation="vertical">
       <ReflexElement minSize={50}>
-        <div className="handle">Top Pane Header</div>
-        <div className="pane-content">
-          <label>Top Pane</label>
-        </div>
-
         <ReflexContainer orientation="horizontal">
           <ReflexElement minSize={50}>
-            <div className="handle">Top Pane Header</div>
             <div className="pane-content">
               <label>Top Pane</label>
             </div>
@@ -90,9 +84,6 @@ const CodeExecution = () => {
           />
 
           <ReflexElement minSize={50}>
-            <ReflexHandle className="handle">
-              Bottom Pane Header: I am a draggable handle! Drag me to resize ...
-            </ReflexHandle>
             <div className="pane-content">
               <label>Bottom Pane</label>
             </div>
@@ -103,15 +94,8 @@ const CodeExecution = () => {
       <ReflexSplitter style={{ ...splitterStyle, ...verticalSplitterStyle }} />
 
       <ReflexElement minSize={50}>
-        <ReflexHandle className="handle">
-          Bottom Pane Header: I am a draggable handle! Drag me to resize ...
-        </ReflexHandle>
-        <div className="pane-content">
-          <label>Bottom Pane</label>
-        </div>
         <ReflexContainer orientation="horizontal">
           <ReflexElement minSize={50}>
-            <div className="handle">Top Pane Header</div>
             <div className="pane-content">
               <label>Top Pane</label>
             </div>
@@ -122,9 +106,6 @@ const CodeExecution = () => {
           />
 
           <ReflexElement minSize={36}>
-            <ReflexHandle className="handle">
-              Bottom Pane Header: I am a draggable handle! Drag me to resize ...
-            </ReflexHandle>
             <div className="pane-content">
               <label>Bottom Pane</label>
             </div>
