@@ -2,6 +2,32 @@ import { createGlobalStyle } from 'styled-components'
 
 import { ThemeType } from './utils'
 
+export const GlobalCodeMirrorStyles = createGlobalStyle<{ theme: ThemeType }>`
+    .react-codemirror2 {    
+        height: 100%;
+        overflow: hidden;
+    }
+    .CodeMirror {
+        height: 0px !important;
+    }
+    .cm-s-default {
+        background: transparent;
+        min-height: 100%;
+        padding: ${({ theme }) => theme.spacers.size4};
+        
+        .CodeMirror-gutters {
+            background: transparent;
+        }
+        .CodeMirror {
+            height: 100% !important;
+            background: transparent !important;
+        }
+        .CodeMirror-scroll {
+            padding-bottom: 0;
+        }
+    }
+`
+
 export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
     html,
     body,
@@ -12,7 +38,8 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
         width: 100%;
         box-sizing: border-box;
         background-color: ${({ theme }) => theme.colors.background};
-        z-index: -100;
+        z-index: ${({ theme }) => theme.zIndex - 100};
+        overflow: hidden;
     }
 
     body {

@@ -8,11 +8,26 @@ https://www.youtube.com/c/BrianFaure1/videos
 http://sorting.at/
 https://www.makinguse.com/
 http://www.algolist.net/Programming_concepts/Recursion
+
+https://practice.geeksforgeeks.org/problems/maximum-money2855/1/?company[]=Amazon&page=1&query=company[]Amazonpage1
 -->
 
+build a tree and graph animation equivalent for sorting and searching
 Change html 100% and window to be like property list project
 Format code navigation
 Add codemirror
+Change theme
+Code executor navigation bar
+hide nav on code-execution
+drag and drop code execution windows
+make responsive
+
+Add to LinkedIn Learning
+
+possible to create badge for github or linkedIn? create github organization
+https://docs.microsoft.com/en-gb/linkedin/consumer/
+https://docs.microsoft.com/en-gb/linkedin/consumer/integrations/self-serve/share-on-linkedin?context=linkedin/consumer/context
+https://addtoprofile.linkedin.com/
 
 http://qnimate.com/create-an-frontend-editor-with-code-highlighting-and-execution/
 

@@ -8,14 +8,19 @@ import * as serviceWorker from './serviceWorker'
 import './index.css'
 import App from './App'
 import { muiTheme, theme } from './utils'
+import { GlobalStyles, GlobalCodeMirrorStyles } from 'App.styles'
 
 const Root = hot(() => (
   // <React.StrictMode>
-  <MuiThemeProvider theme={muiTheme}>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
-  </MuiThemeProvider>
+  <>
+    <MuiThemeProvider theme={muiTheme}>
+      <ThemeProvider theme={theme}>
+        <GlobalCodeMirrorStyles />
+        <GlobalStyles />
+        <App />
+      </ThemeProvider>
+    </MuiThemeProvider>
+  </>
   // </React.StrictMode>
 ))
 

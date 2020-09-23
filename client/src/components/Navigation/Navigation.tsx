@@ -38,7 +38,7 @@ export default function SearchAppBar() {
           </div>
         </Toolbar>
       </AppBar>
-      <Toolbar />
+      {/* <Toolbar /> */}
     </div>
   )
 }

@@ -12,6 +12,7 @@ export const muiTheme = createMuiTheme({
 })
 
 export type ThemeType = {
+  zIndex: number
   breakpoints: string[]
   boxShadow: string
   clientBoxShadow: string
@@ -128,6 +129,7 @@ export type ThemeType = {
 }
 
 export const theme = {
+  zIndex: 0,
   breakpoints: ['950px', '1024px'],
   boxShadow: '0px 4px 6px 0px rgba(0, 0, 0, 0.2)',
   clientBoxShadow: '0px 4px 10px rgba(28, 36, 82, 0.1)',

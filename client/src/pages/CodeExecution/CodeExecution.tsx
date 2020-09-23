@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
+import classNames from 'classnames'
+
 import { map, range, random } from 'lodash'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
@@ -20,6 +22,10 @@ import {
   FirsReflextElement,
   SecondReflexElement,
 } from '../../components'
+import { UnControlled as CodeMirror } from 'react-codemirror2'
+import 'codemirror/lib/codemirror.css'
+import 'codemirror/theme/material.css'
+require('codemirror/mode/javascript/javascript')
 
 const useStyles = makeStyles({
   paper: {
@@ -43,7 +49,7 @@ const useStyles = makeStyles({
 
 const verticalSplitterStyle = {
   width: '10px',
-  zIndex: 0,
+  zIndex: 10,
 }
 const horizontalSplitterStyle = {
   height: '10px',
@@ -55,53 +61,72 @@ const splitterStyle = {
 }
 
 const CodeExecution = () => {
+  const [verticalSize, setVerticalSize] = useState<any>({
+    '1': window.innerWidth / 2,
+    '2': window.innerWidth / 2,
+    '3': window.innerHeight / 2,
+    '4': window.innerHeight / 2,
+  })
   const classes = useStyles()
 
   return (
-    <ReflexContainer orientation="vertical">
-      <ReflexElement minSize={50}>
-        <ReflexContainer orientation="horizontal">
-          <ReflexElement minSize={50}>
-            <div className="pane-content">
-              <label>Top Pane</label>
-            </div>
-          </ReflexElement>
+    <>
+      <ReflexContainer orientation="vertical">
+        <ReflexElement minSize={50}>
+          <ReflexContainer orientation="horizontal">
+            <ReflexElement minSize={50}>
+              <div className="pane-content">
+                <label>Top Pane</label>
+              </div>
+              <button onClick={() => setVerticalSize({ '1': 400 })}>set</button>
+            </ReflexElement>
 
-          <ReflexSplitter
-            style={{ ...splitterStyle, ...horizontalSplitterStyle }}
-          />
+            <ReflexSplitter
+              style={{ ...splitterStyle, ...horizontalSplitterStyle }}
+            />
 
-          <ReflexElement minSize={50}>
-            <div className="pane-content">
-              <label>Bottom Pane</label>
-            </div>
-          </ReflexElement>
-        </ReflexContainer>
-      </ReflexElement>
+            <ReflexElement minSize={50}>
+              <div className="pane-content">
+                <label>Bottom Pane</label>
+              </div>
+            </ReflexElement>
+          </ReflexContainer>
+        </ReflexElement>
 
-      <ReflexSplitter style={{ ...splitterStyle, ...verticalSplitterStyle }} />
+        <ReflexSplitter
+          style={{ ...splitterStyle, ...verticalSplitterStyle }}
+        />
 
-      <ReflexElement minSize={50}>
-        <ReflexContainer orientation="horizontal">
-          <ReflexElement minSize={50}>
-            <div className="pane-content">
-              <label>Top Pane</label>
-            </div>
-          </ReflexElement>
+        <ReflexElement minSize={50}>
+          <ReflexContainer orientation="horizontal">
+            <ReflexElement minSize={50}>
+              <CodeMirror
+                value="<h1>I ♥ react-codemirror2</h1>"
+                options={{
+                  theme: 'default',
+                  mode: 'javascript',
+                  lineNumbers: true,
+                  style: {
+                    height: '100%',
+                  },
+                }}
+                onChange={(editor, data, value) => {}}
+              />
+            </ReflexElement>
 
-          <ReflexSplitter
-            style={{ ...splitterStyle, ...horizontalSplitterStyle }}
-          />
+            <ReflexSplitter
+              style={{ ...splitterStyle, ...horizontalSplitterStyle }}
+            />
 
-          <ReflexElement minSize={36}>
-            <div className="pane-content">
-              <label>Bottom Pane</label>
-            </div>
-          </ReflexElement>
-        </ReflexContainer>
-      </ReflexElement>
-    </ReflexContainer>
-
+            <ReflexElement minSize={50}>
+              <div className="pane-content">
+                <label>Bottom Pane</label>
+              </div>
+            </ReflexElement>
+          </ReflexContainer>
+        </ReflexElement>
+      </ReflexContainer>
+    </>
     // <Grid container spacing={1} className={classes.outerGrid}>
     //   <Grid container item xs={12} spacing={1} className={classes.innerGrid}>
     //     <Grid item lg={6} md={6} xs={12}>
