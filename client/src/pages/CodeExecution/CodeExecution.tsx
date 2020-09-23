@@ -58,18 +58,6 @@ const CodeExecution = () => {
   const classes = useStyles()
 
   return (
-    // <Reflex
-    //   first={
-    //     <FirsReflextElement>
-    //       <div></div>
-    //     </FirsReflextElement>
-    //   }
-    //   second={
-    //     <SecondReflexElement>
-    //       <div>HELLO</div>
-    //     </SecondReflexElement>
-    //   }
-    // />
     <ReflexContainer orientation="vertical">
       <ReflexElement minSize={50}>
         <ReflexContainer orientation="horizontal">
@@ -113,24 +101,8 @@ const CodeExecution = () => {
         </ReflexContainer>
       </ReflexElement>
     </ReflexContainer>
-    // <CodeExecutionPanel />
-    // <div
-    //   style={{
-    //     height: '100%',
-    //   }}
-    // >
 
-    // </div>
     // <Grid container spacing={1} className={classes.outerGrid}>
-    //   <Grid container item xs={12} spacing={1} className={classes.innerGrid}>
-    //     <Grid item lg={6} md={6} xs={12}>
-
-    //     </Grid>
-    //     <Grid item lg={6} md={6} xs={12}>
-    //       <CodeExecutionPanel />
-    //     </Grid>
-    //   </Grid>
-
     //   <Grid container item xs={12} spacing={1} className={classes.innerGrid}>
     //     <Grid item lg={6} md={6} xs={12}>
     //       <CodeExecutionPanel />

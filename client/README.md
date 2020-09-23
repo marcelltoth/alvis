@@ -10,6 +10,10 @@ https://www.makinguse.com/
 http://www.algolist.net/Programming_concepts/Recursion
 -->
 
+Change html 100% and window to be like property list project
+Format code navigation
+Add codemirror
+
 http://qnimate.com/create-an-frontend-editor-with-code-highlighting-and-execution/
 
 // visualise complexity
