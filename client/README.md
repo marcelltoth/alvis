@@ -28,6 +28,8 @@ search functionality for pages
 create content block like on algoexpert
 Prevent offscreen elements
 highlighting syntax
+autosave code in executor
+Frontend execution of tests?
 
 Add to LinkedIn Learning
 

@@ -30,7 +30,7 @@ import 'codemirror/lib/codemirror.js'
 import CodeExecutionPanelAppBar, {
   CodeExecutionPanelAppBarButton,
 } from './CodeExecutionPanelAppBar'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 require('codemirror/mode/javascript/javascript')
 require('codemirror/addon/edit/matchbrackets')
 require('codemirror/addon/edit/closebrackets')
@@ -89,22 +89,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-// how to make each card larger on drag?
-
-const verticalSplitterStyle = {
-  width: '10px',
-  zIndex: 10,
-}
-const horizontalSplitterStyle = {
-  height: '10px',
-}
-
-const splitterStyle = {
-  border: 'none',
-  boxShadow: `0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)`,
-  background: 'transparent',
-}
-
 const ReflexElementPane = styled(ReflexElement)`
   display: flex;
   flex-direction: column;
@@ -118,13 +102,13 @@ const CodeExecution = () => {
     '4': window.innerHeight / 2,
   })
   const classes = useStyles()
-
+  const minSize = 5
   return (
-    <Wrapper>
+    <>
       <ReflexContainer orientation="vertical">
-        <ReflexElement minSize={50}>
+        <ReflexElement minSize={minSize}>
           <ReflexContainer orientation="horizontal">
-            <ReflexElementPane minSize={50}>
+            <ReflexElementPane minSize={minSize}>
               <CodeExecutionPanelAppBar></CodeExecutionPanelAppBar>
               <ReflexElementInnerContainer>
                 <div className="pane-content">
@@ -136,11 +120,9 @@ const CodeExecution = () => {
               </ReflexElementInnerContainer>
             </ReflexElementPane>
 
-            <ReflexSplitter
-              style={{ ...splitterStyle, ...horizontalSplitterStyle }}
-            />
+            <ReflexSplitter className="splitter" />
 
-            <ReflexElementPane minSize={50}>
+            <ReflexElementPane minSize={minSize}>
               <CodeExecutionPanelAppBar></CodeExecutionPanelAppBar>
               <ReflexElementInnerContainer>
                 <div className="pane-content">
@@ -151,13 +133,11 @@ const CodeExecution = () => {
           </ReflexContainer>
         </ReflexElement>
 
-        <ReflexSplitter
-          style={{ ...splitterStyle, ...verticalSplitterStyle }}
-        />
+        <ReflexSplitter />
 
-        <ReflexElement minSize={50}>
+        <ReflexElement minSize={minSize}>
           <ReflexContainer orientation="horizontal">
-            <ReflexElementPane minSize={50}>
+            <ReflexElementPane minSize={minSize}>
               <CodeExecutionPanelAppBar>
                 <CodeExecutionPanelAppBarButton>
                   Run
@@ -198,11 +178,9 @@ func()
               </ReflexElementInnerContainer>
             </ReflexElementPane>
 
-            <ReflexSplitter
-              style={{ ...splitterStyle, ...horizontalSplitterStyle }}
-            />
+            <ReflexSplitter />
 
-            <ReflexElementPane minSize={50}>
+            <ReflexElementPane minSize={minSize}>
               <CodeExecutionPanelAppBar>
                 <CodeExecutionPanelAppBarButton>
                   Submit
@@ -215,7 +193,7 @@ func()
           </ReflexContainer>
         </ReflexElement>
       </ReflexContainer>
-    </Wrapper>
+    </>
   )
 }
 

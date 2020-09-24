@@ -10,6 +10,30 @@ export const GlobalCodeMirrorStyles = createGlobalStyle<{ theme: ThemeType }>`
     .CodeMirror {
         height: 0px !important;
     }
+
+    .reflex-container > .reflex-splitter {
+        background: ${({ theme }) => theme.colors.background};
+    }
+
+    .reflex-splitter {
+        border: none !important;
+        box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+          0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+        background: transparent;
+        
+    }
+
+    .reflex-container.vertical > .reflex-splitter {
+        width: 10px;
+        border: none;
+    }
+
+    .horizontal > .reflex-splitter {
+        height: 10px;
+        border: none;
+        z-index: 101 !important;
+    }
+
     .cm-s-default {
         background: transparent;
         min-height: 100%;
