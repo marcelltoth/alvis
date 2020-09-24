@@ -13,6 +13,9 @@ export const useStyles = makeStyles((theme) => ({
     left: 0,
     right: 0,
   },
+  toolbar: {
+    padding: '0 1%',
+  },
 
   title: {
     flexGrow: 1,

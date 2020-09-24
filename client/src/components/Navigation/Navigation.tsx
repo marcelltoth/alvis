@@ -17,7 +17,11 @@ export default function SearchAppBar() {
   return (
     <div className={classes.root}>
       <AppBar className={classes.muiAppBar} position="static">
-        <Toolbar>
+        <Toolbar
+          classes={{
+            root: classes.toolbar,
+          }}
+        >
           <Drawer />
           <Typography color="inherit" variant="h6" className={classes.title}>
             <SolidAvLogo width="40px" viewBox="0 0 640 640" height="40px" />
