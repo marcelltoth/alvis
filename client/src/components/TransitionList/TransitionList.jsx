@@ -8,7 +8,7 @@ import { bubbleSort } from '../../utils'
 
 let sd = sortedData
 
-export default function App() {
+export default function TransitionList() {
   const [rows, set] = useState(data)
   useEffect(
     () =>
@@ -51,7 +51,7 @@ export default function App() {
   )
 
   return (
-    <div className="list" style={{ height }}>
+    <div className="list" style={{ height, overflow: 'scroll' }}>
       {transitions.map(({ item, props: { y, ...rest }, key }, index) => (
         <animated.div
           key={key}

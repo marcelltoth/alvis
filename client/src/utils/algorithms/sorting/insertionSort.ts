@@ -4,7 +4,7 @@ import { SortingArguments } from './sorting.types'
 export function* insertionSort({ data }: SortingArguments) {
   let arr = data
   let temp, inner
-  for (let i = 1; i <= arr.length - 1; ++i) {
+  for (let i = 1; i <= arr?.length - 1; ++i) {
     temp = arr[i]
     inner = i
     while (inner > 0 && arr[inner - 1] >= temp) {

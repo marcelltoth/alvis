@@ -11,6 +11,8 @@ http://www.algolist.net/Programming_concepts/Recursion
 
 https://practice.geeksforgeeks.org/problems/maximum-money2855/1/?company[]=Amazon&page=1&query=company[]Amazonpage1
 
+https://bost.ocks.org/mike/algorithms/
+
 producthunt
 -->
 
@@ -33,6 +35,9 @@ highlighting syntax
 autosave code in executor
 Frontend execution of tests?
 Flip configuration of reflex elements?
+Predictive javascript syntax with Tries in Codemirror?
+progressive web app
+Asynchronous and chunked processing (web workers with whitelisting) (https://stackoverflow.com/questions/10653809/making-webworkers-a-safe-environment/, https://stackoverflow.com/questions/22506026/how-to-safely-run-user-supplied-javascript-code-inside-the-browser/22507327)
 
 Add to LinkedIn Learning
 
@@ -52,6 +57,8 @@ http://qnimate.com/create-an-frontend-editor-with-code-highlighting-and-executio
 // quantum algorithms
 // maths
 // nature of code
+// competitive coding preparation tests
+// codility
 
 // which type of sort is this? Why?
 // manually execute the sort yourself
@@ -65,7 +72,7 @@ http://worrydream.com/LearnableProgramming/
 https://github.com/amasad/learnable-programming-demo/blob/gh-pages/lib/boot/index.js
 // web workers
 // write code to get the same effect of the animations on the draggable items
-// progressive web app
+
 // web workers
 // use lighthouse
 // use machine learning, semantic ML to teach
@@ -127,3 +134,10 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+cms of interactive learning
+youtube hosted video
+Links to study music
+maths is fun interactive coding examples
+codeforces
+Hardcore mode, complete exercises without making a mistake, if makes a mistake, lose all progress, becomes a challengeto see how far you can make it - codewars

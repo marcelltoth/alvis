@@ -1,15 +1,9 @@
-import React, { useState } from 'react'
+import React, { Suspense, useCallback, useEffect, useState } from 'react'
 import classNames from 'classnames'
 
 import { map, range, random } from 'lodash'
 import { makeStyles, createStyles, Theme, fade } from '@material-ui/core/styles'
 import ReplayIcon from '@material-ui/icons/Replay'
-import Paper from '@material-ui/core/Paper'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import Typography from '@material-ui/core/Typography'
-import Grid from '@material-ui/core/Grid'
-import CodeExecutionPanel from './CodeExecutionPanel'
 import {
   ReflexContainer,
   ReflexElement,
@@ -18,21 +12,21 @@ import {
 } from 'react-reflex'
 import 'react-reflex/styles.css'
 
-import { Wrapper } from '../../components'
-import { UnControlled as CodeMirror } from 'react-codemirror2'
+import {
+  ScrollableTabs,
+  Wrapper,
+  SmallAppBar,
+  SmallAppBarButton,
+} from '../../components'
+import { Controlled as CodeMirror } from 'react-codemirror2'
 import { ReflexElementInnerContainer } from './CodeExecution.styles'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
+import jsbeautifier from 'js-beautify'
 
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/material.css'
 import 'codemirror/lib/codemirror.js'
-import CodeExecutionPanelAppBar, {
-  CodeExecutionPanelAppBarButton,
-} from './CodeExecutionPanelAppBar'
-import styled, { css } from 'styled-components'
-import { IconButton } from '@material-ui/core'
+import styled from 'styled-components'
 require('codemirror/mode/javascript/javascript')
 require('codemirror/addon/edit/matchbrackets')
 require('codemirror/addon/edit/closebrackets')
@@ -41,6 +35,10 @@ require('codemirror/addon/runmode/colorize')
 require('codemirror/addon/hint/javascript-hint')
 require('codemirror/addon/lint/lint')
 require('codemirror/addon/lint/javascript-lint')
+
+const TransitionList = React.lazy(() =>
+  import('../../components/TransitionList/TransitionList')
+)
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -96,7 +94,48 @@ const ReflexElementPane = styled(ReflexElement)`
   flex-direction: column;
 `
 
-const CodeExecution = () => {
+const initialState = jsbeautifier.js_beautify(`function swap(arr, index1, index2) {
+  const temp = arr[index1]
+  arr[index1] = arr[index2]
+  arr[index2] = temp
+}
+
+function* bubbleSort({
+  data
+}) {
+  let arr = data
+  console.log("HELLO FROM THE CODE EXECUTOR!")
+  for (let i = arr.length; i >= 2; i--) {
+      for (let j = 0; j < i; j++) {
+          if (arr[j]?.value > arr[j + 1]?.value) {
+              swap(arr, j, j + 1)
+          }
+      }
+      yield arr
+  }
+  return arr
+}
+
+console.log(bubbleSort({
+  data: [1, 2, 3, 4, 5]
+}))
+
+exports.bubbleSort = bubbleSort`)
+
+type CodeExecutionProps = {
+  codeInitialState?: string
+  codeToExecute?: (code: string) => void
+  onSubmit?: (code: string) => void
+  onRun?: (code: string) => void
+}
+
+const CodeExecution = ({
+  codeInitialState = initialState,
+  onSubmit,
+  onRun,
+}: CodeExecutionProps) => {
+  const [code, setCode] = useState<string>(codeInitialState)
+
   const [verticalSize, setVerticalSize] = useState<any>({
     '1': window.innerWidth / 2,
     '2': window.innerWidth / 2,
@@ -105,27 +144,51 @@ const CodeExecution = () => {
   })
   const classes = useStyles()
   const minSize = 5
+
+  // useEffect(() => {}, [code])
+  // <div className="pane-content">
+  //   <label>Top Pane</label>
+  // </div>
+  // <button onClick={() => setVerticalSize({ '1': 400 })}>
+  //   set
+  // </button>
+
+  const handleCodeReset = useCallback(() => {
+    if (codeInitialState !== code) {
+      // console.log('code', code, codeInitialState)
+      setCode(jsbeautifier.js_beautify(codeInitialState))
+    }
+  }, [code, codeInitialState])
+
+  const handleCodeChange = useCallback(
+    (editor, data, value) => {
+      setCode(value)
+    },
+    [code]
+  )
+
+  const handleSubmit = useCallback(() => {
+    onSubmit && onSubmit(code)
+  }, [code])
+
   return (
     <>
       <ReflexContainer orientation="vertical">
         <ReflexElement minSize={minSize}>
           <ReflexContainer orientation="horizontal">
             <ReflexElementPane minSize={minSize}>
-              <CodeExecutionPanelAppBar></CodeExecutionPanelAppBar>
+              <SmallAppBar></SmallAppBar>
+              {/* <ScrollableTabs /> */}
               <ReflexElementInnerContainer>
-                <div className="pane-content">
-                  <label>Top Pane</label>
-                </div>
-                <button onClick={() => setVerticalSize({ '1': 400 })}>
-                  set
-                </button>
+                <Suspense fallback={<div>Loading...</div>}>
+                  <TransitionList />
+                </Suspense>
               </ReflexElementInnerContainer>
             </ReflexElementPane>
 
             {/* <ReflexSplitter className="splitter" />
-
             <ReflexElementPane minSize={minSize}>
-              <CodeExecutionPanelAppBar></CodeExecutionPanelAppBar>
+              <SmallAppBar></SmallAppBar>
               <ReflexElementInnerContainer>
                 <div className="pane-content">
                   <label>Bottom Pane</label>
@@ -140,38 +203,21 @@ const CodeExecution = () => {
         <ReflexElement minSize={minSize}>
           <ReflexContainer orientation="horizontal">
             <ReflexElementPane minSize={minSize}>
-              <CodeExecutionPanelAppBar>
-                <Button variant="contained">
-                  <ReplayIcon
-                    fontSize="small"
-                    style={{
-                      color: 'white',
-                    }}
-                  />
-                </Button>
-                <CodeExecutionPanelAppBarButton>
-                  Run
-                </CodeExecutionPanelAppBarButton>
-              </CodeExecutionPanelAppBar>
+              <SmallAppBar>
+                <SmallAppBarButton
+                  onClick={handleCodeReset}
+                  variant="contained"
+                  style={{
+                    borderRadius: '0',
+                  }}
+                >
+                  <ReplayIcon fontSize="small" />
+                </SmallAppBarButton>
+                <SmallAppBarButton>Run</SmallAppBarButton>
+              </SmallAppBar>
               <ReflexElementInnerContainer>
                 <CodeMirror
-                  value={`const func = () => console.log('HELLO')
-func()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-`}
+                  value={code}
                   options={{
                     theme: 'default',
                     mode: 'javascript',
@@ -179,11 +225,16 @@ func()
                     spellcheck: true,
                     matchBrackets: true,
                     autoCloseBrackets: true,
+                    autoScroll: false,
                     style: {
                       height: '100%',
                     },
                   }}
-                  onChange={(editor, data, value) => {}}
+                  onBeforeChange={handleCodeChange}
+                  onChange={() => {}}
+                  onBlur={(editor, event) => {
+                    setCode((code) => jsbeautifier.js_beautify(code))
+                  }}
                 />
               </ReflexElementInnerContainer>
             </ReflexElementPane>
@@ -191,13 +242,13 @@ func()
             <ReflexSplitter />
 
             <ReflexElementPane minSize={minSize}>
-              <CodeExecutionPanelAppBar>
-                <CodeExecutionPanelAppBarButton>
+              <SmallAppBar>
+                <SmallAppBarButton onClick={handleSubmit}>
                   Submit
-                </CodeExecutionPanelAppBarButton>
-              </CodeExecutionPanelAppBar>
+                </SmallAppBarButton>
+              </SmallAppBar>
               <ReflexElementInnerContainer>
-                Bottom Right
+                Debug output
               </ReflexElementInnerContainer>
             </ReflexElementPane>
           </ReflexContainer>

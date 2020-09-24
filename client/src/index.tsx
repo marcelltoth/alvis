@@ -9,17 +9,7 @@ import './index.css'
 import App from './App'
 import { muiTheme, theme } from './utils'
 import { GlobalStyles, GlobalCodeMirrorStyles } from 'App.styles'
-// import 'codemirror/lib/codemirror.css'
-// import 'codemirror/theme/material.css'
-// import 'codemirror/lib/codemirror.js'
-// require('codemirror/mode/javascript/javascript')
-// require('codemirror/addon/edit/matchbrackets')
-// require('codemirror/addon/edit/closebrackets')
-// require('codemirror/addon/runmode/runmode')
-// require('codemirror/addon/runmode/colorize')
-// require('codemirror/addon/hint/javascript-hint')
-// require('codemirror/addon/lint/lint')
-// require('codemirror/addon/lint/javascript-lint')
+import { CodeExecutionProvider } from './context'
 
 const Root = hot(() => (
   // <React.StrictMode>
@@ -28,7 +18,9 @@ const Root = hot(() => (
       <ThemeProvider theme={theme}>
         <GlobalCodeMirrorStyles />
         <GlobalStyles />
-        <App />
+        <CodeExecutionProvider>
+          <App />
+        </CodeExecutionProvider>
       </ThemeProvider>
     </MuiThemeProvider>
   </>

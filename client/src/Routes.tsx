@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Navigation, TransitionList, Wrapper } from './components'
 import { Container } from '@material-ui/core'
-import { CodeExecution, SortingRoutes } from './pages'
+import { CodeExecutionPage, SortingRoutes } from './pages'
 import { Flex } from '@rebass/grid'
+
+const CodeExecution = React.lazy(() =>
+  import('./pages/CodeExecution/CodeExecution')
+)
 
 // <ErrorBoundary errorName="default">
 const Routing = () => {
@@ -15,13 +19,19 @@ const Routing = () => {
           <Switch>
             <Route exact path={['/']} render={() => <>Hello TEST</>} />
             <Route
+              path={['/algorithms']}
+              render={() => <>Hello Algorithms</>}
+            />
+            <Route
               path={['/sorting', '/sorting/:id']}
               component={SortingRoutes}
             />
-            <Route path={['/code-execution']} component={CodeExecution} />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Route path={['/code-execution']} component={CodeExecutionPage} />
+            </Suspense>
             <Route
               path={['/data-structures', '/data-structures/:id']}
-              component={SortingRoutes}
+              render={() => <>Hello Data-structures</>}
             />
             <Route render={() => <>Not Found</>} />
           </Switch>
