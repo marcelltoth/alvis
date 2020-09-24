@@ -14,6 +14,7 @@ const useAppBarStyles = makeStyles((theme) => ({
     padding: '0px 0px',
   },
   toolbarRegular: {
+    overflow: 'hidden',
     minHeight: '24px',
     height: '32px',
     display: 'flex',

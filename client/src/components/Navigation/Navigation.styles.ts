@@ -15,6 +15,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   toolbar: {
     padding: '0 1%',
+    minHeight: '50px',
   },
 
   title: {

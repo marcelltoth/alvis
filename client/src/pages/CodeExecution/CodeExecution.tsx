@@ -3,6 +3,7 @@ import classNames from 'classnames'
 
 import { map, range, random } from 'lodash'
 import { makeStyles, createStyles, Theme, fade } from '@material-ui/core/styles'
+import ReplayIcon from '@material-ui/icons/Replay'
 import Paper from '@material-ui/core/Paper'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
@@ -31,6 +32,7 @@ import CodeExecutionPanelAppBar, {
   CodeExecutionPanelAppBarButton,
 } from './CodeExecutionPanelAppBar'
 import styled, { css } from 'styled-components'
+import { IconButton } from '@material-ui/core'
 require('codemirror/mode/javascript/javascript')
 require('codemirror/addon/edit/matchbrackets')
 require('codemirror/addon/edit/closebrackets')
@@ -120,7 +122,7 @@ const CodeExecution = () => {
               </ReflexElementInnerContainer>
             </ReflexElementPane>
 
-            <ReflexSplitter className="splitter" />
+            {/* <ReflexSplitter className="splitter" />
 
             <ReflexElementPane minSize={minSize}>
               <CodeExecutionPanelAppBar></CodeExecutionPanelAppBar>
@@ -129,7 +131,7 @@ const CodeExecution = () => {
                   <label>Bottom Pane</label>
                 </div>
               </ReflexElementInnerContainer>
-            </ReflexElementPane>
+            </ReflexElementPane> */}
           </ReflexContainer>
         </ReflexElement>
 
@@ -139,6 +141,14 @@ const CodeExecution = () => {
           <ReflexContainer orientation="horizontal">
             <ReflexElementPane minSize={minSize}>
               <CodeExecutionPanelAppBar>
+                <Button variant="contained">
+                  <ReplayIcon
+                    fontSize="small"
+                    style={{
+                      color: 'white',
+                    }}
+                  />
+                </Button>
                 <CodeExecutionPanelAppBarButton>
                   Run
                 </CodeExecutionPanelAppBarButton>

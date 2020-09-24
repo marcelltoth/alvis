@@ -14,6 +14,8 @@ https://practice.geeksforgeeks.org/problems/maximum-money2855/1/?company[]=Amazo
 producthunt
 -->
 
+debugging in the frontend
+state management mobx
 build a tree and graph animation equivalent for sorting and searching
 Change html 100% and window to be like property list project
 Format code navigation
@@ -30,6 +32,7 @@ Prevent offscreen elements
 highlighting syntax
 autosave code in executor
 Frontend execution of tests?
+Flip configuration of reflex elements?
 
 Add to LinkedIn Learning
 
