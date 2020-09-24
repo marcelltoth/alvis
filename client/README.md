@@ -141,3 +141,19 @@ Links to study music
 maths is fun interactive coding examples
 codeforces
 Hardcore mode, complete exercises without making a mistake, if makes a mistake, lose all progress, becomes a challengeto see how far you can make it - codewars
+
+Frontend:
+MVP
+
+Add four buttons on bottom, zero ->
+click next, it will visualise
+
+Debug output
+
+Step by step replay machine
+
+menu for different sorting algorithms
+
+Hide everything which is not required (menu buttons)
+
+Backend:

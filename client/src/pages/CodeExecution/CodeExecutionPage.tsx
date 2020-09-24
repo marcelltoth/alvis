@@ -3,9 +3,9 @@ import CodeExecution from './CodeExecution'
 import { postCodeExecution } from '../../api'
 
 const CodeExecutionPage = () => {
-  const onSubmit = useCallback((code) => {
+  const onSubmit = useCallback(async (code) => {
     console.log('code', code)
-    const res = postCodeExecution({ body: code })
+    const res = await postCodeExecution({ body: { code } })
     console.log('res', res)
   }, [])
 

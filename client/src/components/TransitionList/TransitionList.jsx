@@ -10,6 +10,7 @@ let sd = sortedData
 
 export default function TransitionList() {
   const [rows, set] = useState(data)
+
   useEffect(
     () =>
       void setInterval(

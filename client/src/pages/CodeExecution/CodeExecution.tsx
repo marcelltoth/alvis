@@ -95,32 +95,26 @@ const ReflexElementPane = styled(ReflexElement)`
 `
 
 const initialState = jsbeautifier.js_beautify(`function swap(arr, index1, index2) {
-  const temp = arr[index1]
-  arr[index1] = arr[index2]
-  arr[index2] = temp
+  const temp = arr[index1];
+  arr[index1] = arr[index2];
+  arr[index2] = temp;
 }
 
-function* bubbleSort({
-  data
-}) {
-  let arr = data
-  console.log("HELLO FROM THE CODE EXECUTOR!")
+function* bubbleSort({ data }) {
+  let arr = data;
   for (let i = arr.length; i >= 2; i--) {
-      for (let j = 0; j < i; j++) {
-          if (arr[j]?.value > arr[j + 1]?.value) {
-              swap(arr, j, j + 1)
-          }
+    for (let j = 0; j < i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        swap(arr, j, j + 1);
       }
-      yield arr
+    }
+    yield arr;
   }
-  return arr
+  return arr;
 }
 
-console.log(bubbleSort({
-  data: [1, 2, 3, 4, 5]
-}))
-
-exports.bubbleSort = bubbleSort`)
+exports.default = bubbleSort;
+`)
 
 type CodeExecutionProps = {
   codeInitialState?: string
@@ -168,7 +162,7 @@ const CodeExecution = ({
   )
 
   const handleSubmit = useCallback(() => {
-    onSubmit && onSubmit(code)
+    return onSubmit && onSubmit(code)
   }, [code])
 
   return (

@@ -1,5 +1,10 @@
 import { Request, Response, Router } from "express";
-import { BAD_REQUEST, CREATED, OK } from "http-status-codes";
+import {
+  BAD_REQUEST,
+  CREATED,
+  OK,
+  INTERNAL_SERVER_ERROR,
+} from "http-status-codes";
 import { ParamsDictionary } from "express-serve-static-core";
 const { spawn } = require("child_process");
 
@@ -48,11 +53,16 @@ const ls = spawn("node", ["--inspect-brk=9222"]);
 
 // docker run --rm -p 9229:9229 -v /Users/pricet/Desktop:/tmp/source node node --inspect-brk=0.0.0.0 /tmp/source/hello.js
 router.post("/execute-code", async (req: Request, res: Response) => {
-  console.log(req.body);
-  const body = req.body;
-  const result = await executeJsInContainer(body.code);
+  try {
+    const body = req.body;
 
-  return res.status(OK).json({ result });
+    const { result, output } = await executeJsInContainer(body.code);
+
+    return res.status(OK).json({ result, output });
+  } catch (e) {
+    console.log("e", e);
+    return res.status(INTERNAL_SERVER_ERROR).json({ error: e });
+  }
 });
 
 export default router;
